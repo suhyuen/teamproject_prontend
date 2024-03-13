@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
-
 export default function Header(){
-    <header>
+    return(
+    <>
+        <header>
         <img src ="/image/Untitled.png"></img>
         <div>
             <ul>
@@ -18,6 +19,8 @@ export default function Header(){
             </ul>
         </div>
      </header>
+    </>
+    )
      
     
 }    
