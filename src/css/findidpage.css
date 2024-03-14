@@ -6,8 +6,8 @@
     background-image: linear-gradient(to bottom, #ffffff, #FFFBEC) ;
 }
 .findIdLogo {
-   width: 420px; 
-   height: 420px;
+   width: 320px; 
+   height: 320px;
 }
 .findIdInfo{
     display: flex;
@@ -28,7 +28,7 @@
 	font-weight: bolder;
 	font-size: 12px;
 }
-.findIdButton {
+.findIdButton, .certifiedButton{
 	all: unset;
 	margin: 30px 0px 10px 0px;
     width: 300px;
@@ -42,7 +42,35 @@
 	font-weight: bolder;
 	cursor: pointer;
 }
-.findIdButton:last-child {
-	margin: 10px 0px 10px 0px;
-    margin-bottom: 50px;
+.findIdButton {
+	margin: 10px 0px;
+    margin-bottom: 100px;
+}
+.popupOn{
+	width: 250px;
+	height: 150px;
+	background-color: rgb(224, 224, 224);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: center;
+	gap: 30px;
+	border-radius: 20px;
+	position: absolute;
+}
+.popupOff{
+	display: none;
+}
+.popupOn > button{
+    all: unset;
+    width: 372px;
+    width: 150px;
+	height: 40px;
+	border-radius: 20px;
+    background-color:  #FCD11E;
+	border-color: #FCD11E;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	gap: 5px;
 }
