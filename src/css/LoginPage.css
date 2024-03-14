@@ -1,58 +1,103 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
 .lgoinContaner{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .title > h1{
+	margin-top: 80px;
     font-size: 30px;
     font-weight: bolder;
     color: #33312B;
 }
 .content{
+	margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
+	gap: 30px;
+}
+.content > input{
+	all: unset;
+    width: 372px;
+	border-bottom: solid 2px #FCD11E;
+}
+.content > div > input{
+	all: unset;
+    width: 300px;
+	border-bottom: solid 2px #FCD11E;
+}
+.content > div > button{
+	all: unset;
+    width: 72px;
+	height: 30px;
+	background-color:  #FCD11E;
+	border-color: #FCD11E;
+	text-align: center;
+	border-radius: 45px;
+	box-shadow: 5px 5px 3px rgb(207, 207, 207);
+	font-size: 12px;
+	cursor: pointer;
+}
+.content > input::placeholder,
+.content > div > input::placeholder
+{
+    color: black;
+	font-weight: bolder;
+	font-size: 12px;
+}
+.dropDownButton > div{
+	display: flex;
+	justify-content: space-between;
+	border: solid 2px #FCD11E;
+	box-sizing: border-box;
+	padding: 10px;
+	border-radius: 10px;
+}
+.dropDownButton > div > span,
+.dropDownButton > div > p{
+	font-size: 12px;
+}
+
+.dropDownButton:hover{
+	cursor: pointer;
+}
+.listOff{
+	display: none;
+}
+.listOn{
+	margin-top: 5px;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+	position: absolute;
+	text-align: center;
+	border-radius: 10px;
+	border: solid 2px #FCD11E;
+	background-color: #FFFFFF;
+}
+.listOn > li{
+	width: 150px;
+	display: inline;
+	box-sizing: border-box;
+	padding: 10px 0px;
+	margin: 0 auto;
+	font-size: 12px;
+}
+.listOn > li:hover{
+	cursor: pointer;
+	background-color: #FCD11E;
+}
+.button {
+	all: unset;
+	margin: 60px 0px 150px 0px;
+    width: 200px;
+	height: 50px;
+	background-color:  #FCD11E;
+	border-color: #FCD11E;
+	text-align: center;
+	border-radius: 20px;
+	box-shadow: 5px 5px 3px rgb(207, 207, 207);
+	font-size: 15px;
+	font-weight: bolder;
+	cursor: pointer;
 }

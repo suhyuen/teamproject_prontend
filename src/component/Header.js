@@ -1,13 +1,5 @@
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 
-export default function Header(){
-    return(
-    <>
-        <header>
-        <img src ="/image/Untitled.png"></img>
-        <div>
-=======
 import "../css/header.css"
 
 export default function Header(){
@@ -15,7 +7,6 @@ export default function Header(){
     <header>
         <img src ="/image/Untitled.png" width="100" height="100"></img>
         <div className="headerlist">
->>>>>>> 523ab7f95c8e07360e10856116afccd68c26cf2f
             <ul>
                 <li>강아지</li>
                 <li>고양이</li>
@@ -29,10 +20,6 @@ export default function Header(){
             </ul>
         </div>
      </header>
-<<<<<<< HEAD
-    </>
-=======
->>>>>>> 523ab7f95c8e07360e10856116afccd68c26cf2f
     )
      
     
