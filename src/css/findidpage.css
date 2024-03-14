@@ -6,8 +6,8 @@
     background-image: linear-gradient(to bottom, #ffffff, #FFFBEC) ;
 }
 .findIdLogo {
-   width: 420px; 
-   height: 420px;
+   width: 320px; 
+   height: 320px;
 }
 .findIdInfo{
     display: flex;
@@ -44,7 +44,7 @@
 }
 .findIdButton {
 	margin: 10px 0px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 .popupOn{
 	width: 250px;

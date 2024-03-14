@@ -1,4 +1,5 @@
 import Header from "../component/Header"
+import Footer from "../component/Footer"
 import React, { useEffect, useState } from "react"
 import '../css/findidpage.css';
 
@@ -17,19 +18,26 @@ export default function FindidPage(){
         console.log(popState)
     }
 
-    function esckey (){
-        if(window.event.keyCode == 27){
+    // dropDownButton이 listOn상태일 때 바탕화면을 클릭하면 listOff로 바꿔주는 이벤트
+    const handleClickFindidContaner = () => {
+        if(popState === "popupOn"){
             setPopState("popupOff")
         }
-    }   
+    }
+
+    // const handleonKeyDown = (event) => {
+    //     if(event.keyCode === 27){
+    //         setPopState("popupOff")
+    //     }
+    // }   
 
 
     return (
         <>
         <Header></Header>
-        <div className="findIdContaner">
+        <div className="findIdContaner" onClick={handleClickFindidContaner}>
             <img className="findIdLogo" src="../image/Untitled.png" alt="토끼그림"></img>
-            <div className={popState} onKeyUp={esckey}>
+            <div className={popState}>
                 <p>id : test</p>
                 <button>
                     <img src="../image/pawbutton.png"></img>
@@ -46,6 +54,7 @@ export default function FindidPage(){
                 <button className="findIdButton"  onClick={handleClickFindIdButton}>아이디 찾기</button>
             </div>
         </div>
+        <Footer></Footer>
         </>
     )
 }
