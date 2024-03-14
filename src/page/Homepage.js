@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import React from "react";
+import Footer from "../component/Footer";
 
 export default function HomePage() {
   const [postData, setPostData] = useState([
@@ -158,6 +159,7 @@ export default function HomePage() {
           {boardList}
         </div>
       </nav>
+      <Footer></Footer>
     </>
   );
 }
