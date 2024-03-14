@@ -1,0 +1,99 @@
+#userdeletemain {
+  min-width: 1200px;
+  height: 1200px;
+  background: linear-gradient(180deg, #ffffff, #fffbec);
+}
+
+#userdelete-content {
+  width: 600px;
+  height: 645px;
+  margin: 56px auto 0px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#userdelete-img {
+  width: 100px;
+  height: 100px;
+}
+
+#userdelete-title {
+  color: #000000;
+  font-size: 26px;
+  letter-spacing: 4px;
+  font-weight: bold;
+  margin: 32px 0px 72px 0px;
+}
+
+#userdelete-conditions {
+  width: 600px;
+  height: 114px;
+  padding: 21px 22px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #ffffff;
+  border: 1px solid #fcd11e;
+  letter-spacing: -1.5px;
+  line-height: 1.5;
+}
+
+#userdelete-agree {
+  width: 110px;
+  height: 24px;
+  margin: 10px 0px 64px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#userdelete-agreebox {
+  width: 18px;
+  height: 18px;
+}
+
+#userdelete-agreelabel {
+  font-size: 16px;
+  font-weight: lighter;
+  white-space: nowrap;
+}
+
+#userdelete-pw {
+  width: 260px;
+  height: 54px;
+  border: 1px solid #fcd11e;
+  font-size: 18px;
+  font-weight: lighter;
+  color: #868688;
+  padding: 16px 16px 16px 16px;
+  box-sizing: border-box;
+  margin: 0px 0px 88px 0px;
+  outline: none;
+}
+
+#userdelete-button {
+  width: 200px;
+  height: 56px;
+  border-radius: 44.97px;
+  background-color: #fcd11e;
+  border: none;
+  box-shadow: 0 4px 8px rgba(76, 73, 65, 0.4);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 22.49px;
+
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0px auto;
+}
+
+#userdelete-button:hover {
+  cursor: pointer;
+}
+
+#userdelete-buttonimg {
+  width: 44.46px;
+  height: 44.46px;
+  margin: 0px 0px 0px 30.03px;
+}
