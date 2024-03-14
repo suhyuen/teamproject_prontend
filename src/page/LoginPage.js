@@ -8,7 +8,7 @@ export default function LoginPage(){
         <>
         <Header></Header>
         <div className="loginContaner">
-            <img className="logo" src="../image/Untitled.png" alt="토끼그림"></img>
+            <img className="lgoinLogo" src="../image/Untitled.png" alt="토끼그림"></img>
             <form className="loginContent">
                 <input type="text" placeholder="아이디"></input>
                 <input type="text" placeholder="패스워드"></input>
