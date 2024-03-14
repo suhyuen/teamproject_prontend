@@ -46,6 +46,7 @@
 	font-size: 12px;
 }
 .dropDownButton > div{
+	width: 155px;
 	display: flex;
 	justify-content: space-between;
 	border: solid 2px #FCD11E;

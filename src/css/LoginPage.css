@@ -1,0 +1,60 @@
+.loginContaner{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #ffffff, #FFFBEC) ;
+}
+.logo {
+   width: 420px; 
+   height: 420px;
+
+}
+.loginContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	gap: 30px;
+}
+.loginContent > input{
+	all: unset;
+    width: 372px;
+	border-bottom: solid 2px #FCD11E;
+}
+.loginContent > input::placeholder{
+    color: black;
+	font-weight: bolder;
+	font-size: 12px;
+}
+.loginButton {
+	all: unset;
+	margin: 60px 0px 10px 0px;
+    width: 300px;
+	height: 40px;
+	background-color:  #FCD11E;
+	border-color: #FCD11E;
+	text-align: center;
+	border-radius: 20px;
+	box-shadow: 5px 5px 3px rgb(207, 207, 207);
+	font-size: 15px;
+	font-weight: bolder;
+	cursor: pointer;
+}
+.loginUserFunc{
+    font-weight: bolder;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+    margin-bottom: 150px;
+}
+.loginUserFunc > div{
+    font-weight: bolder;
+    font-size: 12px;
+    display: flex;
+    gap: 10px;
+}
+.loginUserFunc:hover,
+.loginUserFunc > div:hover{
+    cursor: pointer;
+}
