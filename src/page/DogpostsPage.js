@@ -2,10 +2,19 @@ import Header from "../component/Header"
 import Footer from "../component/Footer"
 import React, { useEffect, useState } from "react"
 import '../css/dogpostpage.css';
+import '../css/pagination.css';
 import Select from "react-select";
 import Pagination from "react-js-pagination"
+import { useDispatch, useSelector } from "react-redux";
+import { token } from "../app/tokenSlice";
 
 export default function DogpostPage(){
+
+    const dispatch = useDispatch()
+    const tokenSelecter = useSelector((state) => state.token.value);
+
+    dispatch(token("이곳에 토큰을 넣으세요"))
+    console.log(tokenSelecter);
 
     const Write = () => {
         const select = [
@@ -20,7 +29,7 @@ export default function DogpostPage(){
         
         return(
             <Select options={select} //위에서 만든 배열을 select로 넣기
-            onChange={setSelectMenu} //값이 바뀌면 setState되게
+            onChange={setSelectMenu} //값ㄴ이 바뀌면 setState되게
             defaultValue={select[0]} //사용자가 값을 선택하지 않아도 기본 값으로 '온라인'=={online[0]}이 값으로 들어갈 수 있게
             /> 
         )

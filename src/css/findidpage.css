@@ -49,7 +49,8 @@
 .popupOn{
 	width: 250px;
 	height: 150px;
-	background-color: rgb(224, 224, 224);
+	background-color: rgb(255, 255, 255);
+	border: solid 1px #FCD11E;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

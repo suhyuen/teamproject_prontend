@@ -57,3 +57,9 @@
 .loginUserFunc > div:hover{
     cursor: pointer;
 }
+.popupOn > button{
+    cursor: pointer;
+}
+.popupOn > button > span > a{
+    all: unset;
+}

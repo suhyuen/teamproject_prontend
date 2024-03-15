@@ -2,6 +2,7 @@ import Header from "../component/Header"
 import Footer from "../component/Footer"
 import React, { useEffect, useState } from "react"
 import '../css/findidpage.css';
+import { Link } from "react-router-dom";
 
 export default function FindidPage(){
 
@@ -15,7 +16,6 @@ export default function FindidPage(){
     // 팝업 출력 이벤트
     const handleClickFindIdButton = () => {
         setPopState((popState != "popupOff"?"popupOff":"popupOn"))
-        console.log(popState)
     }
 
     // dropDownButton이 listOn상태일 때 바탕화면을 클릭하면 listOff로 바꿔주는 이벤트
@@ -25,11 +25,10 @@ export default function FindidPage(){
         }
     }
 
-    // const handleonKeyDown = (event) => {
-    //     if(event.keyCode === 27){
-    //         setPopState("popupOff")
-    //     }
-    // }   
+    // esc버튼 누를때 팝업 닫음
+     window.onkeydown = function() {
+        setPopState("popupOff")
+     }
 
 
     return (
@@ -41,7 +40,7 @@ export default function FindidPage(){
                 <p>id : test</p>
                 <button>
                     <img src="../image/pawbutton.png"></img>
-                    <span>로그인</span>
+                    <span><Link to="/login">로그인</Link></span>
                 </button>
             </div>
             <form className="findIdInfo">
