@@ -1,0 +1,138 @@
+#noticemain {
+  min-width: 1200px;
+  height: 1120px;
+}
+
+#notice-content {
+  width: 1084px;
+  height: 1008px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#notice-logo {
+  width: 160px;
+  height: 160px;
+  margin: 46px 0px 0px 0px;
+}
+
+#notice-title {
+  color: #000000;
+  font-size: 26px;
+  letter-spacing: 4px;
+  font-weight: bold;
+  margin: -20px 0px 72px 0px;
+}
+
+#notice-list {
+  width: 1084px;
+  height: 560px;
+  margin: 0px 0px 76px 0px;
+}
+
+#notice-listcontent {
+  width: 1084px;
+  height: 112px;
+  border-bottom: 1px solid #dadade;
+  display: flex;
+}
+
+#notice-listcontent2 {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  color: #868686;
+  margin: 0px 0px 24px 0px;
+}
+
+#notice-listcontent2 > li:nth-child(2) {
+  padding: 0px 8px 0px 8px;
+  box-sizing: border-box;
+  border-left: 1px solid #eae9e9;
+  border-right: 1px solid #eae9e9;
+}
+
+#notice-listnumber {
+  width: 58px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 28px 16px 28px 8px;
+}
+
+#notice-listnumber > p {
+  font-size: 18px;
+  color: #868688;
+}
+
+#notice-listcontent1 > p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+  margin: 31px 0px 16px 0px;
+}
+
+#notice-form {
+  width: 412px;
+  height: 48px;
+  position: relative;
+  margin: 0px 0px 44px 0px;
+}
+
+#notice-search {
+  width: 412px;
+  height: 48px;
+  border: 3px solid #ffd600;
+  outline: none;
+}
+
+#notice-searchbtn {
+  width: 40px;
+  height: 40px;
+  outline: none;
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  padding: 0;
+  background-color: #ffffff;
+  border: none;
+}
+
+#notice-searchbtnimg {
+  width: 40px;
+  height: 40px;
+}
+
+#noeice-number {
+  display: flex;
+  gap: 8px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#noeice-number > li {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-color: #adadad;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#noeice-number > li:nth-child(3) {
+  margin: 0px 8px 0px 10px;
+  background-color: #fcd11e;
+}
+
+#noeice-number > li:nth-child(5) {
+  margin: 0px 8px 0px 8px;
+}
+
+#noeice-number > li:nth-child(6) {
+  margin: 0px 10px 0px 0px;
+}

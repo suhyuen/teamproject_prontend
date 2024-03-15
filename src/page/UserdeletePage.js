@@ -1,13 +1,21 @@
 import "../css/userdeletepage.css";
 import Header from "../component/Header.js";
+import { useState } from "react";
+import Footer from "../component/Footer.js";
 
 export default function UserdeletePage() {
+  const [userDeleteDate, setUserDeleteDate] = useState([
+    { img: "/image/userimg.png" },
+  ]);
+  const userDeleteImg = userDeleteDate.map((data) => {
+    return <img id="userdelete-img" src={data.img} alt="userimg"></img>;
+  });
   return (
     <div>
+      <Header />
       <div id="userdeletemain">
-        <Header />
         <div id="userdelete-content">
-          <img id="userdelete-img" src="/image/userimg.png" alt="userimg"></img>
+          {userDeleteImg}
           <h1 id="userdelete-title">회원 탈퇴</h1>
           <form id="userdeletle-form">
             <div id="userdelete-conditions">
@@ -39,6 +47,7 @@ export default function UserdeletePage() {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
