@@ -1,0 +1,86 @@
+.writepage {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 300px;
+}
+
+.write_1 {
+  font-size: 20px;
+  font-weight: bold;
+  width: 178px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.write_2 {
+  display: flex;
+  gap: 120px;
+}
+
+.category_1 > p {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.category_1 > div {
+  display: flex;
+  gap: 16px;
+}
+
+.category_1 > div > button {
+  width: 90px;
+  height: 31px;
+  font-size: 18px;
+  color: white;
+  background-color: #fcd11e;
+  border-radius: 34.16px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.App {
+  width: 768px;
+  height: 630px;
+  border: 1px solid #d2d2d2;
+  margin-top: 30px;
+}
+
+.editor-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.App > input {
+  width: 736px;
+  height: 49px;
+  border: 1px solid #d2d2d2;
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+  margin-left: 16px;
+  margin-top: 16px;
+}
+
+.write_button {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  justify-content: flex-end;
+}
+
+.write_button > a > button {
+  width: 82px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #fcd11e;
+  border-radius: 34.16px;
+  border: 0px;
+  cursor: pointer;
+}
