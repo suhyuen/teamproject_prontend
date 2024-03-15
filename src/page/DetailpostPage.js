@@ -78,8 +78,8 @@ export default function DetailpostPage() {
 
   return (
     <div>
+      <Header />
       <div id="detailpostmain">
-        <Header />
         <div id="detailpost-content">
           <form id="detailpost-contentform">
             {detailPostList}

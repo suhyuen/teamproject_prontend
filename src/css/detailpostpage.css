@@ -82,6 +82,10 @@
   cursor: pointer;
 }
 
+#detailpost-likebtn:active {
+  background-color: #fcd11e;
+}
+
 #detailpost-like {
   display: block;
   width: 100%;
