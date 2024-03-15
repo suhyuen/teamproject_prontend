@@ -153,7 +153,9 @@ export default function HomePage() {
             <div>공지사항</div>
             <div>
               <div>+</div>
-              <div>더보기</div>
+              <div>
+                <Link to="notice">더보기</Link>
+              </div>
             </div>
           </div>
           {boardList}
