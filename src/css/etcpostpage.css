@@ -1,108 +1,85 @@
 .etcPostContaner{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-image: linear-gradient(to bottom, #ffffff, #FFFBEC) ;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   background-image: linear-gradient(to bottom, #ffffff, #FFFBEC) ;
 }
 .etcPostLogo {
-    width: 220px; 
-    height: 220px;
+   width: 220px; 
+   height: 220px;
+}
+.etcPostFunc{
+   width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   margin-bottom: 40px;
+}
+.etcPostFunc > button{
+   width: 100px;
+   height: 32px;
+   background-color: #fcd11e;
+   border-color: #FCD11E;
+   border-radius: 8px;
+   cursor: pointer;
+}
+.etcegory, 
+.etcegory:active, 
+.etcegory:visited{
+   all: unset;
+   width: 150px;
+   height: 32px;
+   font-size: 14px;
+   align-items: center;
+   border-radius: 8px;
+   border: solid 1px #FCD11E;
+   display: flex;
+   text-align-last: center;
+   text-align: center;
+   background:url('../../public/image/arrow.png') no-repeat right 8px center
+}
+.etcegory:hover{
+   border: solid 2px #FCD11E;
+}
+select option:checked {
+   background-color: #FCD11E;
  }
- .etcPostFunc{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-bottom: 40px;
+ select option[value="selected"][disabled] {
+  display: none;
  }
- .etcPostFunc > button{
-    width: 100px;
-    height: 32px;
-    background-color: #fcd11e;
-    border-color: #FCD11E;
-    border-radius: 8px;
-    cursor: pointer;
+ .etcPost{
+   width: 50%;
+   display: flex;
+   gap: 20px;
+   margin: 20px 0px;
+   border-bottom: dotted 1px gray;
+}
+.etcPost > div > p{
+   margin-bottom: 10px;
+   display: flex;
+   gap: 20px;
+   font-size: 15px;
+   font-weight: bolder;
+   margin: 0px 0px 10px 10px;
+}
+.etcPost > div > ul {
+   display: flex;
+   gap: 70px;
+   font-size: 12px;
+   margin: 0px 0px 10px 10px;
+}
+.etcPost > span:nth-child(2){
+   color: rgb(221, 3, 3);
+   font-weight: bolder;
+}
+form > input {
+   width: 400px;
+   height: 38px;
+   border: 1px solid #fcd11e;
+   outline: none;
+   border-radius: 8px;
+   padding: 10px;
+   box-sizing: border-box;
+   margin: 30px 0px;
  }
- .etcegory, 
- .etcegory:active, 
- .etcegory:visited{
-    all: unset;
-    width: 150px;
-    height: 32px;
-    font-size: 14px;
-    align-items: center;
-    border-radius: 8px;
-    border: solid 1px #FCD11E;
-    display: flex;
-    text-align-last: center;
-    text-align: center;
-    background:url('../../public/image/arrow.png') no-repeat right 8px center
- }
- .etcegory:hover{
-    border: solid 2px #FCD11E;
- }
- select option:checked {
-    background-color: #FCD11E;
-  }
-  select option[value="selected"][disabled] {
-	display: none;
-  }
-  .etcPost{
-    width: 50%;
-    display: flex;
-    gap: 20px;
-    margin: 20px 0px;
-    border-bottom: dotted 1px gray;
- }
- .etcPost > div > p{
-    margin-bottom: 10px;
-    display: flex;
-    gap: 20px;
-    font-size: 15px;
-    font-weight: bolder;
-    margin: 0px 0px 10px 10px;
- }
- .etcPost > div > ul {
-    display: flex;
-    gap: 70px;
-    font-size: 12px;
-    margin: 0px 0px 10px 10px;
- }
- .etcPost > span:nth-child(2){
-    color: rgb(221, 3, 3);
-    font-weight: bolder;
- }
- .pagination{
-    display: flex;
-    gap: 20px;
-    margin-bottom: 50px;
- }
- .active{
-    all: unset;
-    background-color: #FCD11E;
- }
- .pagination > li{
-    width: 25px;
-    height: 25px;
-    color: rgb(92, 92, 92);
-    border-radius: 999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 15px;
- }
- .pagination > li > a {
-    all: unset;
- }
- form > input {
-    width: 400px;
-    height: 38px;
-    border: 1px solid #fcd11e;
-    outline: none;
-    border-radius: 8px;
-    padding: 10px;
-    box-sizing: border-box;
-    margin: 30px 0px;
-  }

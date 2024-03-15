@@ -2,6 +2,7 @@ import Header from "../component/Header"
 import Footer from "../component/Footer"
 import React, { useEffect, useState } from "react"
 import '../css/catpostpage.css';
+import '../css/pagination.css';
 import Select from "react-select";
 import Pagination from "react-js-pagination"
 
@@ -24,7 +25,7 @@ export default function CatpostPage(){
             /> 
         )
     }
-
+    
     function enterkey() {
         if (window.event.keyCode == 13) {
           document.getElementById("serchForm").submit();

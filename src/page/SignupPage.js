@@ -22,6 +22,21 @@ export default function SignupPage(){
         }
     }
 
+    //이메일 중복체크 이벤트
+    const handleClickMailButton = () => {
+        alert("이메일 중복체크 구현중입니다.")
+    }
+
+    //닉네임 중복체크 이벤트
+    const handleClickNicknameButton = () => {
+        alert("닉네임 중복체크 구현중입니다.")
+    }
+
+    //회원가입 버튼 이벤트
+    const handleClickJoinButton = () => {
+        alert("가입해주셔서 감사합니다.")
+    }
+
     return(
         <>
            <Header/>
@@ -30,18 +45,18 @@ export default function SignupPage(){
                 <form className="content">
                     <div>
                         <input type="text" placeholder="이메일"></input>
-                        <button>중복체크</button>
+                        <button onClick={handleClickMailButton}>중복체크</button>
                     </div>
                     <div>
                         <input type="text" placeholder="닉네임"></input>
-                        <button>중복체크</button>
+                        <button onClick={handleClickNicknameButton}>중복체크</button>
                     </div>
                     <input type="password" placeholder="비밀번호"></input>
                     <input type="password" placeholder="비밀번호 확인"></input>
-                    <div className="dropDownButton">
+                    <div className="dropDownButton" onClick={handleClickDropDownButton}>
                         <div>
-                            <span onClick={handleClickDropDownButton}>{dropDownText}</span>
-                            <p  onClick={handleClickDropDownButton}>▼</p>
+                            <span>{dropDownText}</span>
+                            <p>▼</p>
                         </div>
                         <ul className={dropdownView}>
                             <li className="dropdownText" data-value="강아지" onClick={handleClickDropDownButton}>강아지</li>
@@ -52,7 +67,7 @@ export default function SignupPage(){
                     <input type="이름" placeholder="이름"></input>
                     <input type="주소" placeholder="주소"></input>
                 </form>
-                <button className="button">회원가입</button>
+                <button className="button" onClick={handleClickJoinButton}>회원가입</button>
             </div>
         </>
     )
