@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {Route, Routes} from "react-router-dom"
 
@@ -28,7 +27,7 @@ function App() {
     <>
     <Routes>
       <Route path ="/" element ={<HomePage/>}></Route>
-      <Route path ="catposts" element ={<CatpostPage/>}></Route>
+      <Route path ="/catposts" element ={<CatpostPage/>}></Route>
       <Route path ="/dogposts" element ={<DogpostPage/>}></Route>
       <Route path ="/etcposts" element ={<EtcpostPage/>}></Route>
       <Route path ="/detailpost" element ={<DetailpostPage/>}></Route>

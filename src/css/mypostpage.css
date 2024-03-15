@@ -32,6 +32,11 @@
   font-size: 18px;
 }
 
+.main3_list {
+  width: 50%;
+  margin: 0 auto;
+}
+
 .main3_list > div:first-child {
   display: flex;
   align-items: center;
@@ -64,6 +69,10 @@
   font-size: 16px;
   color: #c20909;
 }
-.pagination1 li .activePage {
-  background-color: #fcd11e;
+
+.pagination1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 80px;
 }

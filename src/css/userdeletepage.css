@@ -1,13 +1,13 @@
 #userdeletemain {
   min-width: 1200px;
-  height: 1200px;
+  height: 1000px;
   background: linear-gradient(180deg, #ffffff, #fffbec);
 }
 
 #userdelete-content {
   width: 600px;
   height: 645px;
-  margin: 56px auto 0px auto;
+  margin: 0px auto 0px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,6 +16,7 @@
 #userdelete-img {
   width: 100px;
   height: 100px;
+  margin: 56px 0px 0px 0px;
 }
 
 #userdelete-title {
