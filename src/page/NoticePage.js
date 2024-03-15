@@ -1,9 +1,17 @@
 import "../css/noticepage.css";
+import "../css/pagination.css";
 import Header from "../component/Header.js";
 import Footer from "../component/Footer.js";
 import { useState, useEffect } from "react";
+import Pagination from "react-js-pagination";
+import { Link } from "react-router-dom";
 
 export default function NoticePage() {
+  const [page, setPage] = useState(1);
+
+  const handlePageChange = (page) => {
+    setPage(page);
+  };
   const [noticeData, setNoticeDate] = useState([
     {
       uid: "1",
@@ -49,7 +57,9 @@ export default function NoticePage() {
           <p>{data.uid}</p>
         </div>
         <div id="notice-listcontent1">
-          <p>{data.title}</p>
+          <Link to={"/detailpost"}>
+            <p id="notice-listcontent1p">{data.title}</p>
+          </Link>
           <ul id="notice-listcontent2">
             <li>{data.nickname}</li>
             <li>작성일 {data.createdAt}</li>
@@ -78,16 +88,15 @@ export default function NoticePage() {
               ></img>
             </button>
           </form>
-          <ul id="noeice-number">
-            <li>&lt;&lt;</li>
-            <li>&lt;</li>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>&gt;</li>
-            <li>&gt;&gt;</li>
-          </ul>
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={5}
+            totalItemsCount={450}
+            pageRangeDisplayed={5}
+            prevPageText={"‹"}
+            nextPageText={"›"}
+            onChange={handlePageChange}
+          />
         </div>
       </div>
       <Footer />
