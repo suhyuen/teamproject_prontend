@@ -119,7 +119,7 @@ export default function MypostPage() {
             <Link to="/myposts">내가 쓴 게시글</Link>
           </div>
         </div>
-        {boardList}
+        <div className="mypostlist">{boardList}</div>
         <div className="pagination1">
           <Pagination
             activePage={page} // 현재 페이지

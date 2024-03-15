@@ -33,7 +33,6 @@
 }
 
 .main3_list {
-  width: 50%;
   margin: 0 auto;
 }
 
@@ -75,4 +74,9 @@
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 80px;
+}
+
+.mypostlist {
+  width: 50%;
+  margin: 0 auto;
 }
