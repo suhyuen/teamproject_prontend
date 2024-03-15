@@ -82,8 +82,9 @@
   cursor: pointer;
 }
 
-#detailpost-likebtn:active {
+#detailpost-likebtn.liked {
   background-color: #fcd11e;
+  border: none;
 }
 
 #detailpost-like {
@@ -134,47 +135,22 @@
 
 #detailpost-cmtform {
   width: 1080px;
-  height: 152px;
-  border: 1px solid #fcd11e;
-  margin: 36px 0px 40px 0px;
+  height: 151.4px;
+  margin: 36px 0px 32px 0px;
+  position: relative;
+  border: 2px solid #fcd11e;
 }
 
-#detailpost-cmtcontent {
-  width: 1080px;
-  height: 112px;
-  padding: 24px 24px 24px 24px;
-  box-sizing: border-box;
-  font-size: 16px;
-  color: #000;
-  outline: none;
-  resize: none;
-  border: none;
-}
-
-#cmtlistdiv {
-  width: 1062px;
-}
-
-#detailpost-cmtbtn {
-  width: 1080px;
-  height: 40px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-}
-
-#detailpost-cmtfile {
-  display: none;
-}
-
-#detailpost-cmtbtn1 {
+#detailpost-cmtbtn1a {
+  position: absolute;
+  top: 8px;
+  right: 16px;
   width: 56px;
   height: 24px;
   background-color: #fcd11e;
   border: none;
   border-radius: 44.97px;
   box-shadow: 0 4px 8px rgba(76, 73, 65, 0.4);
-  margin: 0px 16px 16px 0px;
 }
 
 #detailpost-listbntndiv {
