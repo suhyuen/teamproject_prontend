@@ -25,7 +25,7 @@ export default function CatpostPage(){
             /> 
         )
     }
-
+    
     function enterkey() {
         if (window.event.keyCode == 13) {
           document.getElementById("serchForm").submit();

@@ -2,8 +2,43 @@ import "../css/detailpostpage.css";
 import Header from "../component/Header.js";
 import Footer from "../component/Footer.js";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import ReactQuill, { Quill } from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function DetailpostPage() {
+  const [editorHtml, setEditorHtml] = useState("");
+
+  const modules = {
+    toolbar: [["image"]],
+  };
+  const [liked, setLiked] = useState(false);
+
+  const handleLikeClick = () => {
+    setLiked(!liked);
+  };
+
+  const [dpostListData, setDpostListDate] = useState([
+    {
+      category: "dog",
+    },
+  ]);
+
+  const dpostList = dpostListData.map((data) => {
+    return (
+      <Link to="/notice">
+        <button id="detailpost-listbntn">
+          <img
+            id="detailpost-buttonimg"
+            src="/image/pawbutton.png"
+            alt="paw"
+          ></img>
+          목록 페이지
+        </button>
+      </Link>
+    );
+  });
+
   const [detailPostData, setDetailPostDate] = useState([
     {
       category: "카테고리",
@@ -84,7 +119,12 @@ export default function DetailpostPage() {
           <form id="detailpost-contentform">
             {detailPostList}
             <div id="detailpost-likebtndiv">
-              <button id="detailpost-likebtn" type="submit">
+              <button
+                id="detailpost-likebtn"
+                type="button"
+                onClick={handleLikeClick}
+                className={liked ? "liked" : ""}
+              >
                 <img
                   id="detailpost-like"
                   src="/image/like.png"
@@ -97,39 +137,20 @@ export default function DetailpostPage() {
             <div id="detailpost-cmt">
               <div id="cmtlistdiv">{cmtList}</div>
               <form id="detailpost-cmtform">
-                <div id="detailpost-cmtformdiv">
-                  <textarea
-                    id="detailpost-cmtcontent"
-                    type="text"
-                    placeholder="댓글을 입력해주세요"
-                  ></textarea>
-                  <ul id="detailpost-cmtbtn">
-                    <li>
-                      <input id="detailpost-cmtfile" type="file"></input>
-                      <label for="detailpost-cmtfile" id="detailpost-cmtimg">
-                        <img src="/image/phote.png" alt="phote.uplode"></img>
-                      </label>
-                    </li>
-                    <li>
-                      <button id="detailpost-cmtbtn1" type="submit">
-                        등록
-                      </button>
-                    </li>
-                  </ul>
-                </div>
+                <ReactQuill
+                  style={{ width: "1080px", height: "110px" }}
+                  theme="snow"
+                  value={editorHtml}
+                  onChange={setEditorHtml}
+                  modules={modules}
+                />
+                <button id="detailpost-cmtbtn1a" type="submit">
+                  등록
+                </button>
               </form>
             </div>
           </div>
-          <div id="detailpost-listbntndiv">
-            <button id="detailpost-listbntn">
-              <img
-                id="detailpost-buttonimg"
-                src="/image/pawbutton.png"
-                alt="paw"
-              ></img>
-              목록 페이지
-            </button>
-          </div>
+          <div id="detailpost-listbntndiv">{dpostList}</div>
         </div>
       </div>
       <Footer />
