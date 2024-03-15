@@ -102,3 +102,8 @@ nav {
   display: flex;
   gap: 16px;
 }
+
+.main3_1 > div:nth-child(2) > div > a {
+  text-decoration: none;
+  color: black;
+}
