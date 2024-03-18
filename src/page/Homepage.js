@@ -94,13 +94,13 @@ export default function HomePage() {
           <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
             <SwiperSlide>
               <img
-                src="/image/99901_86791_3616.jpg"
+                src="/image/강아지사진.jpg"
                 width="1160px"
                 height="400px"
               ></img>
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/image/동물3.jpg" width="1160px" height="400px"></img>
+              <img src="/image/이미지.jpg" width="1160px" height="400px"></img>
             </SwiperSlide>
             <SwiperSlide>
               {" "}
@@ -112,11 +112,7 @@ export default function HomePage() {
             </SwiperSlide>
             <SwiperSlide>
               {" "}
-              <img
-                src="/image/고양이2.webp"
-                width="1160px"
-                height="400px"
-              ></img>
+              <img src="/image/이미지2.jpg" width="1160px" height="400px"></img>
             </SwiperSlide>
             <SwiperSlide>
               {" "}
@@ -133,7 +129,11 @@ export default function HomePage() {
               <p>제목</p>
             </div>
             <div className="main2_img">
-              <img src="/image/동물1.jpg" width="474px" height="300px"></img>
+              <img
+                src="/image/강아지사진12.jpg"
+                width="474px"
+                height="300px"
+              ></img>
               <p>제목</p>
             </div>
           </div>
