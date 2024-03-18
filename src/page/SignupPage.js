@@ -1,4 +1,5 @@
 import Header from "../component/Header"
+import Footer from "../component/Footer"
 import React, { useState } from "react"
 import '../css/SignupPage.css';
 
@@ -37,9 +38,10 @@ export default function SignupPage(){
         alert("가입해주셔서 감사합니다.")
     }
 
+    
     return(
         <>
-           <Header/>
+           <Header></Header>
             <div className="lgoinContaner" onClick={handleClickLoginContaner}>
                 <div className="title"><h1>회원가입</h1></div>
                 <form className="content">
@@ -69,6 +71,7 @@ export default function SignupPage(){
                 </form>
                 <button className="button" onClick={handleClickJoinButton}>회원가입</button>
             </div>
+            <Footer></Footer>
         </>
     )
 }

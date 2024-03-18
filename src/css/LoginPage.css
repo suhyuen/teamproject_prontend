@@ -1,4 +1,5 @@
 .loginContaner{
+    height: 700px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -6,8 +7,8 @@
     background-image: linear-gradient(to bottom, #ffffff, #FFFBEC) ;
 }
 .lgoinLogo {
-   width: 420px; 
-   height: 420px;
+   width: 220px; 
+   height: 220px;
 }
 .loginContent{
     display: flex;
@@ -57,9 +58,14 @@
 .loginUserFunc > div:hover{
     cursor: pointer;
 }
+.loginUserFunc > div > p > a,
+.loginUserFunc > p > a{
+    all: unset;
+}
 .popupOn > button{
     cursor: pointer;
 }
 .popupOn > button > span > a{
     all: unset;
 }
+

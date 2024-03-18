@@ -7,6 +7,7 @@ import Select from "react-select";
 import Pagination from "react-js-pagination"
 import { useDispatch, useSelector } from "react-redux";
 import { token } from "../app/tokenSlice";
+import { Link } from "react-router-dom";
 
 export default function DogpostPage(){
 
@@ -29,7 +30,7 @@ export default function DogpostPage(){
         
         return(
             <Select options={select} //위에서 만든 배열을 select로 넣기
-            onChange={setSelectMenu} //값ㄴ이 바뀌면 setState되게
+            onChange={setSelectMenu} //값이 바뀌면 setState되게
             defaultValue={select[0]} //사용자가 값을 선택하지 않아도 기본 값으로 '온라인'=={online[0]}이 값으로 들어갈 수 있게
             /> 
         )
@@ -41,8 +42,8 @@ export default function DogpostPage(){
         }
     }
 
+    //pagination 함수
     const [page, setPage] = useState(1);
-
     const handlePageChange = (page) => {
         setPage(page);
     };    
@@ -54,13 +55,13 @@ export default function DogpostPage(){
             <img className="dogPostLogo" src="../image/Untitled.png" alt="토끼그림"></img>
             <div className="dogPostFunc">
             {/* <Write></Write> */}
-            <select className="category" name="languages" id="lang" required>
-                <option value="" disabled selected>카테고리</option>
-                <option value="php">동네친구</option>
-                <option value="java">동물자랑</option>
-                <option value="golang">동물상식</option>
-            </select>
-                <button>글작성</button>
+                <select className="category" name="languages" id="lang" required>
+                    <option value="" disabled selected>카테고리</option>
+                    <option value="php">동네친구</option>
+                    <option value="java">동물자랑</option>
+                    <option value="golang">동물상식</option>
+                </select>
+                <Link to="/write"><button>글작성</button></Link>
             </div>
             <div className="dogPost">
                 <span>1</span>

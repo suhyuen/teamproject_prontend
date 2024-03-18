@@ -16,7 +16,7 @@
    align-items: center;
    margin-bottom: 40px;
 }
-.catPostFunc > button{
+.catPostFunc > a > button{
    width: 100px;
    height: 32px;
    background-color: #fcd11e;
