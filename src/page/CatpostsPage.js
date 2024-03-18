@@ -58,7 +58,7 @@ export default function CatpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>우리고양이 자랑~!</p>
+                    <span>우리고양이 자랑~!</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -71,7 +71,7 @@ export default function CatpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>우리고양이 자랑~!</p>
+                    <span>우리고양이 자랑~!</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -84,7 +84,7 @@ export default function CatpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>우리고양이 자랑~!</p>
+                    <span>우리고양이 자랑~!</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -97,7 +97,7 @@ export default function CatpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>우리고양이 자랑~!</p>
+                    <span>우리고양이 자랑~!</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -110,7 +110,7 @@ export default function CatpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>우리고양이 자랑~!</p>
+                    <span>우리고양이 자랑~!</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -123,7 +123,7 @@ export default function CatpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>우리고양이 자랑~!</p>
+                    <span>우리고양이 자랑~!</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -136,7 +136,7 @@ export default function CatpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>우리고양이 자랑~!</p>
+                    <span>우리고양이 자랑~!</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -149,7 +149,7 @@ export default function CatpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>우리고양이 자랑~!</p>
+                    <span>우리고양이 자랑~!</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -162,7 +162,7 @@ export default function CatpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>우리고양이 자랑~!</p>
+                    <span>우리고양이 자랑~!</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -175,7 +175,7 @@ export default function CatpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>우리고양이 자랑~!</p>
+                    <span>우리고양이 자랑~!</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
