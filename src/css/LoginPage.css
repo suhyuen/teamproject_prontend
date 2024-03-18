@@ -23,8 +23,7 @@
 	border-bottom: solid 2px #FCD11E;
 }
 .loginContent > input::placeholder{
-    color: black;
-	font-weight: bolder;
+    color: rgb(143, 143, 143);
 	font-size: 12px;
 }
 .loginButton {
@@ -42,7 +41,6 @@
 	cursor: pointer;
 }
 .loginUserFunc{
-    font-weight: bolder;
     font-size: 12px;
     display: flex;
     justify-content: space-between;
@@ -50,7 +48,6 @@
     margin-bottom: 150px;
 }
 .loginUserFunc > div{
-    font-weight: bolder;
     font-size: 12px;
     display: flex;
     gap: 10px;
@@ -63,10 +60,3 @@
 .loginUserFunc > p > a{
     all: unset;
 }
-.popupOn > button{
-    cursor: pointer;
-}
-.popupOn > button > span > a{
-    all: unset;
-}
-

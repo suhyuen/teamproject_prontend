@@ -28,6 +28,7 @@
 }
 .content > div > button{
 	all: unset;
+	font-weight: bold;
     width: 72px;
 	height: 30px;
 	background-color:  #FCD11E;
@@ -41,8 +42,7 @@
 .content > input::placeholder,
 .content > div > input::placeholder
 {
-    color: black;
-	font-weight: bolder;
+    color: rgb(143, 143, 143);
 	font-size: 12px;
 }
 .dropDownButton > div{
