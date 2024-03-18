@@ -5,6 +5,7 @@ import '../css/catpostpage.css';
 import '../css/pagination.css';
 import Select from "react-select";
 import Pagination from "react-js-pagination"
+import { Link } from "react-router-dom";
 
 export default function CatpostPage(){
     const Write = () => {
@@ -32,8 +33,8 @@ export default function CatpostPage(){
         }
     }
 
+    //pagination 함수
     const [page, setPage] = useState(1);
-
     const handlePageChange = (page) => {
         setPage(page);
     };    
@@ -45,13 +46,13 @@ export default function CatpostPage(){
             <img className="catPostLogo" src="../image/Untitled.png" alt="토끼그림"></img>
             <div className="catPostFunc">
             {/* <Write></Write> */}
-            <select className="category" name="languages" id="lang" required>
-                <option value="" disabled selected>카테고리</option>
-                <option value="php">동네친구</option>
-                <option value="java">동물자랑</option>
-                <option value="golang">동물상식</option>
-            </select>
-                <button>글작성</button>
+                <select className="category" name="languages" id="lang" required>
+                    <option value="" disabled selected>카테고리</option>
+                    <option value="php">동네친구</option>
+                    <option value="java">동물자랑</option>
+                    <option value="golang">동물상식</option>
+                </select>
+                <Link to="/write"><button>글작성</button></Link>
             </div>
             <div className="catPost">
                 <span>1</span>
