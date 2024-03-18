@@ -7,6 +7,9 @@ import Pagination from "react-js-pagination";
 import { Link } from "react-router-dom";
 
 export default function NoticePage() {
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
   const [page, setPage] = useState(1);
 
   const handlePageChange = (page) => {
@@ -57,7 +60,7 @@ export default function NoticePage() {
           <p>{data.uid}</p>
         </div>
         <div id="notice-listcontent1">
-          <Link to={"/detailpost"}>
+          <Link to={"/detailpost"} onClick={handleClick}>
             <p id="notice-listcontent1p">{data.title}</p>
           </Link>
           <ul id="notice-listcontent2">
