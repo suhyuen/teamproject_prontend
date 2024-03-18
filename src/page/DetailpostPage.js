@@ -7,6 +7,9 @@ import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 export default function DetailpostPage() {
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
   const [editorHtml, setEditorHtml] = useState("");
 
   const modules = {
@@ -26,7 +29,7 @@ export default function DetailpostPage() {
 
   const dpostList = dpostListData.map((data) => {
     return (
-      <Link to="/notice">
+      <Link to="/notice" onClick={handleClick}>
         <button id="detailpost-listbntn">
           <img
             id="detailpost-buttonimg"

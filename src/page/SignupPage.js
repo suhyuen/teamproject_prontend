@@ -38,7 +38,6 @@ export default function SignupPage(){
         alert("가입해주셔서 감사합니다.")
     }
 
-
     return(
         <>
            <Header></Header>
