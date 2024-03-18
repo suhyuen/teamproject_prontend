@@ -55,20 +55,17 @@
     margin: 20px 0px;
     border-bottom: dotted 1px gray;
  }
- .dogPost > div > p{
-    margin-bottom: 10px;
-    display: flex;
-    gap: 20px;
-    font-size: 15px;
-    font-weight: bolder;
-    margin: 0px 0px 10px 10px;
- }
- .dogPost > div > ul {
-    display: flex;
-    gap: 70px;
-    font-size: 12px;
-    margin: 0px 0px 10px 10px;
- }
+ .dogPost > div > span{
+   font-size: 15px;
+   font-weight: bolder;
+   margin-left: 10px;
+}
+.dogPost > div > ul {
+   display: flex;
+   gap: 70px;
+   font-size: 12px;
+   margin: 10px 0px 10px 10px;
+}
  .dogPost > span:nth-child(2){
     color: rgb(221, 3, 3);
     font-weight: bolder;

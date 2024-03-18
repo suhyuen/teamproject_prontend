@@ -38,7 +38,6 @@ export default function SignupPage(){
         alert("가입해주셔서 감사합니다.")
     }
 
-    
     return(
         <>
            <Header></Header>
@@ -46,7 +45,7 @@ export default function SignupPage(){
                 <div className="title"><h1>회원가입</h1></div>
                 <form className="content">
                     <div>
-                        <input type="text" placeholder="이메일"></input>
+                        <input type="text" placeholder="아이디"></input>
                         <button onClick={handleClickMailButton}>중복체크</button>
                     </div>
                     <div>
@@ -66,6 +65,7 @@ export default function SignupPage(){
                             <li className="dropdownText" data-value="기타" onClick={handleClickDropDownButton}>기타</li>
                         </ul>
                     </div>
+                    <input type="text" placeholder="이메일"></input>
                     <input type="이름" placeholder="이름"></input>
                     <input type="주소" placeholder="주소"></input>
                 </form>

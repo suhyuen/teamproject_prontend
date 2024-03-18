@@ -67,7 +67,7 @@ export default function DogpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>같이산책해요</p>
+                    <span>같이산책해요</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -80,7 +80,7 @@ export default function DogpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>같이산책해요</p>
+                    <span>같이산책해요</span><span>[1]</span>   
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -93,7 +93,7 @@ export default function DogpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>같이산책해요</p>
+                    <span>같이산책해요</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -106,7 +106,7 @@ export default function DogpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>같이산책해요</p>
+                    <span>같이산책해요</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -119,7 +119,7 @@ export default function DogpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>같이산책해요</p>
+                    <span>같이산책해요</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -132,7 +132,7 @@ export default function DogpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>같이산책해요</p>
+                    <span>같이산책해요</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -145,7 +145,7 @@ export default function DogpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>같이산책해요</p>
+                    <span>같이산책해요</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -158,7 +158,7 @@ export default function DogpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>같이산책해요</p>
+                    <span>같이산책해요</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -171,7 +171,7 @@ export default function DogpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>같이산책해요</p>
+                    <span>같이산책해요</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
@@ -184,7 +184,7 @@ export default function DogpostPage(){
                 <span>1</span>
                 <span>{"<"}동네친구{">"}</span>
                 <div>
-                    <p>같이산책해요</p>
+                    <span>같이산책해요</span><span>[1]</span>
                     <ul>
                         <li>작성자</li>
                         <li>작성일</li>
