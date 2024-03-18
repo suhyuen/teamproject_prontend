@@ -24,8 +24,7 @@
 	margin-top: 60px;
 }
 .findIdInfo > input::placeholder{
-    color: black;
-	font-weight: bolder;
+	color: rgb(143, 143, 143);
 	font-size: 12px;
 }
 .findIdButton, .certifiedButton{
