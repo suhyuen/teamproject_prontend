@@ -7,14 +7,20 @@ import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 export default function DetailpostPage() {
+  const handleClickalertButton = () => {
+    alert("삭제되었습니다.");
+  };
+
   const handleClick = () => {
     window.scrollTo(0, 0);
   };
+
   const [editorHtml, setEditorHtml] = useState("");
 
   const modules = {
     toolbar: [["image"]],
   };
+
   const [liked, setLiked] = useState(false);
 
   const handleLikeClick = () => {
@@ -64,7 +70,17 @@ export default function DetailpostPage() {
           <img id="detailpost-userimg" src={data.img} alt="post-userimg"></img>
           <ul id="detailpost-usertitleul">
             <li>{data.nickname}</li>
-            <li>작성일 {data.createdAt}</li>
+            <li>
+              <p id="detailpost-createp">작성일 {data.createdAt}</p>
+              <div>
+                <Link to="/updatepost">
+                  <button id="detailpost-revise">수정</button>
+                </Link>
+                <button id="detailpost-delete" onClick={handleClickalertButton}>
+                  삭제
+                </button>
+              </div>
+            </li>
           </ul>
         </div>
         <div id="detailpost-maincontent1">{data.content}</div>
@@ -107,7 +123,17 @@ export default function DetailpostPage() {
               <li>{data.nickname}</li>
               <li>작성일 {data.createdAt}</li>
             </ul>
-            <p id="detailpost-cmttitlep">{data.content}</p>
+            <ul id="detailpost-cmttitleul1">
+              <li>
+                <p id="detailpost-cmttitlep">{data.content}</p>
+              </li>
+              <li>
+                <button id="detailpost-revise">수정</button>
+                <button id="detailpost-delete" onClick={handleClickalertButton}>
+                  삭제
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
