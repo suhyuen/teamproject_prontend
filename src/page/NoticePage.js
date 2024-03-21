@@ -80,6 +80,18 @@ export default function NoticePage() {
         <div id="notice-content">
           <img id="notice-logo" src="/image/Untitled.png" alt="logo"></img>
           <h1 id="notice-title">공지사항</h1>
+          <div id="notice-btndiv">
+            <Link to="/adminwrite" onClick={handleClick}>
+              <button id="notice-writebtn">
+                <img
+                  id="notice-buttonimg"
+                  src="/image/pawbutton.png"
+                  alt="paw"
+                ></img>
+                글작성
+              </button>
+            </Link>
+          </div>
           <div id="notice-list">{noticeList}</div>
           <form id="notice-form">
             <input id="notice-search" type="search"></input>
