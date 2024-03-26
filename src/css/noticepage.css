@@ -26,6 +26,25 @@
   margin: -20px 0px 72px 0px;
 }
 
+#notice-btndiv {
+  width: 1084px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#notice-writebtn {
+  width: 140px;
+  height: 40px;
+  background-color: #fcd11e;
+  border: none;
+  border-radius: 44.97px;
+  box-shadow: 0 4px 8px rgba(76, 73, 65, 0.4);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 22.49px;
+}
+
 #notice-list {
   width: 1084px;
   height: 560px;

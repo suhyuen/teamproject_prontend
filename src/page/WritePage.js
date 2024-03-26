@@ -5,6 +5,7 @@ import "../css/writepage.css";
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Quill Editor의 스타일 파일
+import axios from "axios";
 
 export default function WritePage() {
   const navigate = useNavigate();
@@ -28,10 +29,25 @@ export default function WritePage() {
     });
   };
 
+  const handlesubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:8080/write", formData, {
+        headers: {
+          "content-type": "application/json",
+          Authorization: localStorage.getItem("accessToken"),
+        },
+      })
+      .then((e) => {
+        navigate("/myposts");
+      });
+  };
+
   return (
     <>
       <Header></Header>
-      <form>
+      <form onSubmit={handlesubmit}>
         <nav className="writepage">
           <div className="write_1">글쓰기</div>
           <div className="write_2">
@@ -77,7 +93,7 @@ export default function WritePage() {
             </div>
             <div className="write_button">
               <Link to="/myposts">
-                <button>작성</button>
+                <button type="submit">작성</button>
               </Link>
               <Link to="/">
                 <button>취소</button>
