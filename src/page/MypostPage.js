@@ -102,6 +102,7 @@ export default function MypostPage() {
           <p>{data.nickname}</p>
           <p>작성일 {data.createdAt}</p>
           <p>조회 {data.viewer}</p>
+          <p>좋아요 {data.likes}</p>
         </div>
       </div>
     );
