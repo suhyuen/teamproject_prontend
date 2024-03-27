@@ -5,6 +5,7 @@ import "../css/writepage.css";
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Quill Editor의 스타일 파일
+import axios from "axios";
 
 export default function WritePage() {
   const navigate = useNavigate();
@@ -14,7 +15,9 @@ export default function WritePage() {
   };
 
   const [formData, setFormData] = useState({
-    categoriesUid: 1,
+    userUid: "3",
+    pageUid: "",
+    mainUid: "",
     title: "",
     content: "",
   });
@@ -28,28 +31,98 @@ export default function WritePage() {
     });
   };
 
+  const handlesubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:8080/write", formData, {
+        headers: {
+          "content-type": "application/json",
+          // Authorization: localStorage.getItem("accessToken"),
+        },
+      })
+      .then((e) => {
+        navigate("/myposts");
+      });
+  };
+
+  const [category1, setCategory1] = useState(null);
+  const [category2, setCategory2] = useState(null);
+
+  const handleCategoryClick = (category) => {
+    setFormData({ ...formData, pageUid: category });
+    setCategory1(category);
+  };
+
+  const handleSubCategoryClick = (category) => {
+    setFormData({ ...formData, mainUid: category });
+    setCategory2(category);
+  };
+
   return (
     <>
       <Header></Header>
-      <form>
+      <form onSubmit={handlesubmit}>
         <nav className="writepage">
           <div className="write_1">글쓰기</div>
           <div className="write_2">
             <div className="category_1">
               <p>카테고리 1</p>
               <div>
-                <button>강아지</button>
-                <button>고양이</button>
-                <button>기타</button>
+                <div
+                  className={`category_list ${
+                    category1 === "2" ? "clicked" : ""
+                  }`}
+                  onClick={() => handleCategoryClick("2")}
+                >
+                  강아지
+                </div>
+                <div
+                  className={`category_list ${
+                    category1 === "3" ? "clicked" : ""
+                  }`}
+                  onClick={() => handleCategoryClick("3")}
+                >
+                  고양이
+                </div>
+                <div
+                  className={`category_list ${
+                    category1 === "4" ? "clicked" : ""
+                  }`}
+                  onClick={() => handleCategoryClick("4")}
+                >
+                  기타
+                </div>
               </div>
             </div>
             <div>
               <div className="category_1">
                 <p>카테고리 2</p>
                 <div>
-                  <button>동네친구</button>
-                  <button>동물자랑</button>
-                  <button>동물상식</button>
+                  <div
+                    className={`category_list ${
+                      category2 === "1" ? "clicked" : ""
+                    }`}
+                    onClick={() => handleSubCategoryClick("1")}
+                  >
+                    동네친구
+                  </div>
+                  <div
+                    className={`category_list ${
+                      category2 === "2" ? "clicked" : ""
+                    }`}
+                    onClick={() => handleSubCategoryClick("2")}
+                  >
+                    동물자랑
+                  </div>
+                  <div
+                    className={`category_list ${
+                      category2 === "3" ? "clicked" : ""
+                    }`}
+                    onClick={() => handleSubCategoryClick("3")}
+                  >
+                    동물상식
+                  </div>
                 </div>
               </div>
             </div>
@@ -76,9 +149,7 @@ export default function WritePage() {
               </div>
             </div>
             <div className="write_button">
-              <Link to="/myposts">
-                <button>작성</button>
-              </Link>
+              <button type="submit">작성</button>
               <Link to="/">
                 <button>취소</button>
               </Link>
