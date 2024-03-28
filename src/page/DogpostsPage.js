@@ -14,9 +14,6 @@ export default function DogpostPage() {
   const dispatch = useDispatch();
   const tokenSelecter = useSelector((state) => state.token.value);
 
-  dispatch(token("이곳에 토큰을 넣으세요"));
-  console.log(tokenSelecter);
-
   const Write = () => {
     const select = [
       { value: "", label: "카테고리" },

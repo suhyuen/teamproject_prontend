@@ -6,8 +6,10 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Quill Editor의 스타일 파일
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 export default function WritePage() {
+  const tokenSelecter = useSelector((state) => state.token.value);
   const navigate = useNavigate();
   const [text, setText] = useState("");
   const handleChange = (value) => {
@@ -15,7 +17,7 @@ export default function WritePage() {
   };
 
   const [formData, setFormData] = useState({
-    userUid: "3",
+    userUid: "",
     pageUid: "",
     mainUid: "",
     title: "",
@@ -37,8 +39,8 @@ export default function WritePage() {
     axios
       .post("http://localhost:8080/write", formData, {
         headers: {
-          "content-type": "application/json",
-          // Authorization: localStorage.getItem("accessToken"),
+          "Content-Type": "application/json",
+          Authorization: tokenSelecter,
         },
       })
       .then((e) => {

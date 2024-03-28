@@ -5,9 +5,11 @@ import "../css/mypostpage.css";
 import { useEffect, useState } from "react";
 import Pagination from "react-js-pagination";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 export default function MypostPage() {
   const [page, setPage] = useState(1);
+  const tokenSelecter = useSelector((state) => state.token.value);
 
   const handlePageChange = (page) => {
     setPage(page);
@@ -26,19 +28,17 @@ export default function MypostPage() {
     },
   ]);
 
-  const [userUid, setUserUid] = useState("");
-  useEffect(() => {
-    setUserUid("3");
-  }, []);
-
   useEffect(() => {
     axios
       .post(
         "http://localhost:8080/myposts",
-        { userUid }
-        //{
-        //headers: { Authorization: localStorage.getItem("accessToken") },
-        // }
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: tokenSelecter,
+          },
+        }
       )
       .then((resp) => {
         setPostData(resp.data);
@@ -59,7 +59,7 @@ export default function MypostPage() {
           </div>
         </div>
         <div>
-          <p>{data.nickname}</p>
+          <p>{data.user.nickname}</p>
           <p>작성일 {data.createdAt}</p>
           <p>조회 {data.viewer}</p>
           <p>좋아요 {data.likeCount}</p>
