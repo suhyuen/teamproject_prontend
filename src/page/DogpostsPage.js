@@ -14,9 +14,6 @@ export default function DogpostPage() {
   const dispatch = useDispatch();
   const tokenSelecter = useSelector((state) => state.token.value);
 
-  dispatch(token("이곳에 토큰을 넣으세요"));
-  console.log(tokenSelecter);
-
   const Write = () => {
     const select = [
       { value: "", label: "카테고리" },
@@ -55,7 +52,7 @@ export default function DogpostPage() {
       mainName: "",
       title: "",
       commentCount: "",
-      nickname: "",
+      user: { nickname: "" },
       createdAt: "",
       viewer: "",
       likeCount: "",
@@ -75,14 +72,14 @@ export default function DogpostPage() {
           <div>{data.uid}</div>
           <div>&lt;{data.mainName}&gt;</div>
           <div>
-            <Link to="/detailpost">
+            <Link to={`/detailpost?uid=` + data.uid}>
               <div>{data.title}</div>
             </Link>
             <p>[{data.commentCount}]</p>
           </div>
         </div>
         <div>
-          <p>{data.nickname}</p>
+          <p>닉네임 {data.user.nickname}</p>
           <p>작성일 {data.createdAt}</p>
           <p>조회 {data.viewer}</p>
           <p>좋아요 {data.likeCount}</p>

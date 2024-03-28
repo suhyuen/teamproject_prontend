@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
 import "../css/mypostpage.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "react-js-pagination";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 export default function MypostPage() {
   const [page, setPage] = useState(1);
+  const tokenSelecter = useSelector((state) => state.token.value);
 
   const handlePageChange = (page) => {
     setPage(page);
@@ -14,95 +17,52 @@ export default function MypostPage() {
 
   const [postData, setPostData] = useState([
     {
-      postUid: "1",
-      categoryName: "동네친구",
-      title: "제목입니다",
-      comment: "1",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "13",
-      likes: "1",
-    },
-    {
-      postUid: "1",
-      categoryName: "동네친구",
-      title: "제목입니다",
-      comment: "1",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "13",
-      likes: "1",
-    },
-    {
-      postUid: "1",
-      categoryName: "동네친구",
-      title: "제목입니다",
-      comment: "1",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "13",
-      likes: "1",
-    },
-    {
-      postUid: "1",
-      categoryName: "동네친구",
-      title: "제목입니다",
-      comment: "1",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "13",
-      likes: "1",
-    },
-    {
-      postUid: "1",
-      categoryName: "동네친구",
-      title: "제목입니다",
-      comment: "1",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "13",
-      likes: "1",
-    },
-    {
-      postUid: "1",
-      categoryName: "동네친구",
-      title: "제목입니다",
-      comment: "1",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "13",
-      likes: "1",
-    },
-    {
-      postUid: "1",
-      categoryName: "동네친구",
-      title: "제목입니다",
-      comment: "1",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "13",
-      likes: "1",
+      uid: "",
+      categoryName: "",
+      title: "",
+      commentCount: "",
+      nickname: "",
+      createdAt: "",
+      viewer: "",
+      likeCount: "",
     },
   ]);
 
+  useEffect(() => {
+    axios
+      .post(
+        "http://localhost:8080/myposts",
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: tokenSelecter,
+          },
+        }
+      )
+      .then((resp) => {
+        setPostData(resp.data);
+      });
+  }, []);
+
   const boardList = postData.map((data) => {
     return (
-      <div className="main3_list">
+      <div className="main3_list" key={data.uid}>
         <div>
-          <div>{data.postUid}</div>
+          <div>{data.uid}</div>
           <div>&lt;{data.categoryName}&gt;</div>
           <div>
             <Link to="/detailpost">
               <div>{data.title}</div>
             </Link>
-            <p>[{data.comment}]</p>
+            <p>[{data.commentCount}]</p>
           </div>
         </div>
         <div>
-          <p>{data.nickname}</p>
+          <p>{data.user.nickname}</p>
           <p>작성일 {data.createdAt}</p>
           <p>조회 {data.viewer}</p>
-          <p>좋아요 {data.likes}</p>
+          <p>좋아요 {data.likeCount}</p>
         </div>
       </div>
     );
