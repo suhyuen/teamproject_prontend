@@ -35,6 +35,7 @@ export default function LoginPage(){
             if(response.headers !== null){
                 dispatch(token(response.headers.authorization));
                 dispatch(userId(formData.userId));
+                alert(formData.userId + "님 안녕하세요 방문해주셔서 감사합니다.");
                 navgate("/")
             }
         } catch (error) {
