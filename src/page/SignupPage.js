@@ -1,10 +1,9 @@
+import "../css/SignupPage.css";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import axios from "axios";
-
 import React, { useRef, useState } from "react";
-import "../css/SignupPage.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupPage() {
   const [dropdownView, setDropdownView] = useState("listOff");
@@ -61,9 +60,7 @@ export default function SignupPage() {
         );
         idCheck.current = response.data;
         alert(
-          idCheck.current === "ok"
-            ? "사용 가능한 아이디 입니다."
-            : "이미 사용중인 아이디 입니다."
+          idCheck.current ==="ok"?"사용 가능한 아이디 입니다.":"이미 사용중인 아이디 입니다."
         );
       } else {
         alert("id는 영문 4자리~10자리까지 입력되어야 합니다.");
@@ -85,11 +82,8 @@ export default function SignupPage() {
           { headers: { "Content-Type": "application/json" } }
         );
         nicknameCheck.current = response.data;
-        alert(
-          nicknameCheck.current === "ok"
-            ? "사용 가능한 닉네임 입니다."
-            : "이미 사용중인 닉네임 입니다."
-        );
+
+        alert(nicknameCheck.current === "ok"? "사용 가능한 닉네임 입니다.": "이미 사용중인 닉네임 입니다.");
       } else {
         alert(
           "닉네임은 영문, 한글, 숫자 조합으로 4자리~10자리까지 입력되어야 합니다."
