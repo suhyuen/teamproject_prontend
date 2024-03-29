@@ -38,7 +38,10 @@ export default function MyPage() {
         userEmail: response.data.email,
         userAdress: response.data.adress,
       });
+<<<<<<< HEAD
+=======
       console.log(userData);
+>>>>>>> c7eea43ef7cfed455bb6f54dfc515f91392a3317
     })
     .catch((error) => {
       console.error(error);
