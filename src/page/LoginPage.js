@@ -6,6 +6,7 @@ import '../css/LoginPage.css';
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { token } from "../app/tokenSlice";
+import { userId } from "../app/userSlice";
 
 export default function LoginPage(){
     const [formData, setFormData] = useState({userId:"", userPw:""});
@@ -13,8 +14,7 @@ export default function LoginPage(){
     const dispatch = useDispatch();
     const tokenSelecter = useSelector((state) => state.token.value);
 
-    const navgater = useNavigate();
-    
+    const navgate = useNavigate();
     const handleChangeInput = (e) => {
         const {name, value} = e.target;
         setFormData({...formData, [name] : value});
@@ -32,9 +32,10 @@ export default function LoginPage(){
                     headers: {"Content-Type": "application/x-www-form-urlencoded"}
                 }
             );
-            if(response.headers.authorization !== null){
+            if(response.headers !== null){
                 dispatch(token(response.headers.authorization));
-                navgater("/")
+                dispatch(userId(formData.userId));
+                navgate("/")
             }
         } catch (error) {
             alert("id와 pw를 확인해주세요")
