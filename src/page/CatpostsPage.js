@@ -47,7 +47,7 @@ export default function CatpostPage() {
       mainName: "",
       title: "",
       commentCount: "",
-      nickname: "",
+      user: { nickname: "" },
       createdAt: "",
       viewer: "",
       likeCount: "",
@@ -67,14 +67,14 @@ export default function CatpostPage() {
           <div>{data.uid}</div>
           <div>&lt;{data.mainName}&gt;</div>
           <div>
-            <Link to="/detailpost">
+            <Link to={`/detailpost?uid=` + data.uid}>
               <div>{data.title}</div>
             </Link>
             <p>[{data.commentCount}]</p>
           </div>
         </div>
         <div>
-          <p>{data.nickname}</p>
+          <p>닉네임 {data.user.nickname}</p>
           <p>작성일 {data.createdAt}</p>
           <p>조회 {data.viewer}</p>
           <p>좋아요 {data.likeCount}</p>

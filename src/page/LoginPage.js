@@ -15,7 +15,6 @@ export default function LoginPage(){
     const tokenSelecter = useSelector((state) => state.token.value);
 
     const navgate = useNavigate();
-    
     const handleChangeInput = (e) => {
         const {name, value} = e.target;
         setFormData({...formData, [name] : value});

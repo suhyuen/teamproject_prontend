@@ -82,6 +82,7 @@ export default function SignupPage() {
           { headers: { "Content-Type": "application/json" } }
         );
         nicknameCheck.current = response.data;
+
         alert(nicknameCheck.current === "ok"? "사용 가능한 닉네임 입니다.": "이미 사용중인 닉네임 입니다.");
       } else {
         alert(
