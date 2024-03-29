@@ -12,7 +12,7 @@ export default function LoginPage(){
     const [formData, setFormData] = useState({userId:"", userPw:""});
 
     const dispatch = useDispatch();
-    const tokenSelecter = useSelector((state) => state.token.value);
+    //const tokenSelecter = useSelector((state) => state.token.value); 테스트시 이상없으면
 
     const navgate = useNavigate();
     const handleChangeInput = (e) => {
