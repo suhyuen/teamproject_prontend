@@ -36,3 +36,7 @@ header {
 .link_login {
   border-right: 1px solid black;
 }
+
+.viewOff, .viewOff li{
+  display: none;
+}
