@@ -37,14 +37,18 @@ export default function UserdeletePage() {
 
   const handelClickUserDeleteButton = (e) => {
     e.preventDefault();
-        const resp = axios.post(
-            "http://localhost:8080/exitMember",
-            { userPw: formData.password, userId: userId },
-            { headers: { "Content-Type": "application/json", "Authorization": token } }
-        ).then((resp)=>{
-          alert(resp.data);
-          navigate(resp.data === "탈퇴 완료되었습니다."?"/":"");
-        })
+    if(checkboxClick.current === false){
+      const resp = axios.post(
+        "http://localhost:8080/exitMember",
+        { userPw: formData.password, userId: userId },
+        { headers: { "Content-Type": "application/json", "Authorization": token } }
+      ).then((resp)=>{
+        alert(resp.data);
+        navigate(resp.data === "회원 탈퇴가 완료되었습니다."?"/":"");
+      })
+    }else{
+      alert("탈퇴에 동의해주세요");
+    }
   }
 
   return (
