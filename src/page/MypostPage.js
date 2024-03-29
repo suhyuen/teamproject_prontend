@@ -21,7 +21,7 @@ export default function MypostPage() {
       categoryName: "",
       title: "",
       commentCount: "",
-      nickname: "",
+      user: { nickname: "" },
       createdAt: "",
       viewer: "",
       likeCount: "",
@@ -52,7 +52,7 @@ export default function MypostPage() {
           <div>{data.uid}</div>
           <div>&lt;{data.categoryName}&gt;</div>
           <div>
-            <Link to="/detailpost">
+            <Link to={`/detailpost?uid=` + data.uid}>
               <div>{data.title}</div>
             </Link>
             <p>[{data.commentCount}]</p>

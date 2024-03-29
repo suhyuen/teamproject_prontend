@@ -45,6 +45,10 @@ export default function DetailpostPage() {
     content: "",
   });
 
+  const [deleteComment, setDeleteComment] = useState({
+    uid: "",
+  });
+
   useEffect(() => {
     axios
       .get(`http://localhost:8080/detailpost?uid=${searchParams.get("uid")}`)
@@ -93,6 +97,33 @@ export default function DetailpostPage() {
       });
   }, []);
 
+  const handleDeleteComment = (uid) => {
+    setDeleteComment({
+      uid: uid,
+    });
+    axios
+      .post(
+        `http://localhost:8080/detailpost/${searchParams.get(
+          "uid"
+        )}/deletecomment`,
+        {
+          data: {
+            uid: uid,
+          },
+        },
+
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: tokenSelecter,
+          },
+        }
+      )
+      .then((resp) => {
+        console.log("댓글이 삭제되었습니다");
+      });
+  };
+
   const handleClickalertButton = () => {
     alert("삭제되었습니다.");
   };
@@ -126,7 +157,7 @@ export default function DetailpostPage() {
 
   const cmtList = cmtData.map((data) => {
     return (
-      <div id="detailpost-cmttitle">
+      <div key={data.uid} id="detailpost-cmttitle">
         <div id="detailpost-cmttitlediv">
           <img
             id="detailpost-cmtuserimg"
@@ -144,7 +175,10 @@ export default function DetailpostPage() {
               </li>
               <li>
                 <button id="detailpost-revise">수정</button>
-                <button id="detailpost-delete" onClick={handleClickalertButton}>
+                <button
+                  id="detailpost-delete"
+                  onClick={() => handleDeleteComment(data.uid)}
+                >
                   삭제
                 </button>
               </li>
