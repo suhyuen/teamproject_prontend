@@ -15,6 +15,10 @@ export default function DetailpostPage() {
   const [editorHtml, setEditorHtml] = useState("");
   const [cmtData, setCmtData] = useState([
     {
+      uid: "",
+      user: {
+        userUid: "",
+      },
       user: {
         nickname: "",
       },
@@ -43,10 +47,6 @@ export default function DetailpostPage() {
     userUid: "",
     postUid: "",
     content: "",
-  });
-
-  const [deleteComment, setDeleteComment] = useState({
-    uid: "",
   });
 
   useEffect(() => {
@@ -93,23 +93,19 @@ export default function DetailpostPage() {
         )}`
       )
       .then((resp) => {
+        console.log(resp.data);
         setCmtData(resp.data);
       });
   }, []);
 
   const handleDeleteComment = (uid) => {
-    setDeleteComment({
-      uid: uid,
-    });
     axios
       .post(
         `http://localhost:8080/detailpost/${searchParams.get(
           "uid"
         )}/deletecomment`,
         {
-          data: {
-            uid: uid,
-          },
+          uid: uid,
         },
 
         {
@@ -120,7 +116,8 @@ export default function DetailpostPage() {
         }
       )
       .then((resp) => {
-        console.log("댓글이 삭제되었습니다");
+        console.log(resp.data);
+        alert("댓글이 삭제되었습니다");
       });
   };
 
@@ -177,7 +174,9 @@ export default function DetailpostPage() {
                 <button id="detailpost-revise">수정</button>
                 <button
                   id="detailpost-delete"
-                  onClick={() => handleDeleteComment(data.uid)}
+                  onClick={() => {
+                    handleDeleteComment(data.uid);
+                  }}
                 >
                   삭제
                 </button>
