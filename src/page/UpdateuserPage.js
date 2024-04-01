@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../css/updateuser.css";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
@@ -8,31 +8,30 @@ import { useSelector } from "react-redux";
 
 export default function UpdateuserPage() {
 
+  
   const tokenSelecter = useSelector((state) => state.token.value);
   const userIdSelecter = useSelector((state) => state.userId.value);
+  const [nicknameCheck, setNicknameCheck] = useState("")
+  const navigate = useNavigate();
 
-  const nicknameCheck = useRef(""); //nickname체크여부
-  
-  //userData
   const [formData, setFormData] = useState({
-    userName: "",
     userNickname: "",
+    userName: "",
     userId: "",
     userEmail: "",
     userAdress: "",
   });
 
-  //화면 열릴때 초기값 입력해주는 함수
   useEffect(() => {
-    axios.get("http://localhost:8080/userInfo", 
+    const response = axios.get("http://localhost:8080/userInfo", 
     {
       params: { userId: userIdSelecter },
       headers: { Authorization: tokenSelecter }
     })
     .then((response) => {
       setFormData({
-        userName: response.data.username,
         userNickname : response.data.nickname,
+        userName: response.data.username,
         userId: response.data.userId,
         userEmail: response.data.email,
         userAdress: response.data.adress,
@@ -41,55 +40,80 @@ export default function UpdateuserPage() {
     .catch((error) => {
       console.error(error);
     });
-  }, [userIdSelecter, tokenSelecter]);
+  }, []);
 
   //input태그 입력시 formData에 저장하는 함수
   const handleChangeInput = (e) => {
     const {name, value} = e.target;
     setFormData({...formData, [name]: value});
-    console.log(e.target.value);
   }
-
   //닉네임 체크 함수
-  const handleClickNicknameButton = async () => {
-    try {
-      const regex = /^[가-힣A-Za-z0-9]{4,10}$/;
-      if (regex.test(formData.nickname)) {
-        const response = await axios.post(
-          "http://localhost:8080/nicknameCheck",
-          { nickname: formData.nickname },
-          { headers: { "Content-Type": "application/json" } }
-        );
-        nicknameCheck.current = response.data;
-
-        alert(nicknameCheck.current === "ok"? "사용 가능한 닉네임 입니다.": "이미 사용중인 닉네임 입니다.");
+  const handleClickNicknameButton = async (e) => {
+  e.preventDefault();
+  try {
+    const regex = /^[가-힣A-Za-z0-9]{4,10}$/;
+    if (regex.test(formData.userNickname)) {
+      const response = await axios.post(
+        "http://localhost:8080/nicknameCheck",
+        { nickname: formData.userNickname },
+        { headers: { "Content-Type": "application/json" }}
+      );
+      if (response.data === "ok") {
+        setNicknameCheck(response.data);
+        alert("사용 가능한 닉네임 입니다.");
       } else {
-        alert(
-          "닉네임은 영문, 한글, 숫자 조합으로 4자리~10자리까지 입력되어야 합니다."
-        );
+        alert("이미 사용중인 닉네임 입니다.");
       }
-    } catch (error) {
-      alert("오류가 발생했습니다. 다시 시도해주세요.");
+    } else {
+      alert("닉네임은 영문, 한글, 숫자 조합으로 4자리~10자리까지 입력되어야 합니다.");
     }
-  };
+  } catch (error) {
+    console.error(error);
+    alert("오류가 발생했습니다. 다시 시도해주세요.");
+  }
+};
+
 
   // 업데이트 함수
-  const handleClickUpdateButton = async () => {
+  const handleClickUpdateButton = () => {
     let normalization = true;
     let errorMessage = "nonError";
-
     const emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
-    if (nicknameCheck.current !== "ok") {
+    if (nicknameCheck !== "ok" || nicknameCheck === null) {
       // 닉네임 확인
       normalization = false;
       errorMessage = "닉네임 체크를 해주세요";
-    } else if (emailRegex.test(formData.email) === false) {
+    } else if (emailRegex.test(formData.userEmail) === false) {
       // email 확인
       normalization = false;
       errorMessage = "이메일 양식을 확인해주세요";
     } 
+    try {
+      if (normalization === true) {
+        const response = axios.post(
+          "http://localhost:8080/userInfoUpdate",
+          {
+            userId: userIdSelecter,
+            nickname: formData.userNickname,
+            email: formData.userEmail,
+            adress: formData.userAdress,
+          },
+          { headers: { "Content-Type": "application/json", "Authorization": tokenSelecter }
+          }
+        );
+        alert(formData.userNickname + "수정 완료되었습니다.");
+        navigate("/mypage");
+      } else {
+        alert(errorMessage);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("오류가 발생했습니다. 다시 시도해주세요.");
+    }
+
   }
+
 
   return (
     <>
@@ -102,17 +126,9 @@ export default function UpdateuserPage() {
             <button>사진 추가</button>
             <div>
               <div className="mypage_list">
-                <p>이름</p>
-                <div>{formData.userName}</div>
-              </div>
-              <div className="mypage_list">
                 <p>닉네임</p>
                 <input type="text" name="userNickname" value={formData.userNickname} onChange={handleChangeInput}></input>
                 <button onClick={handleClickNicknameButton}>중복확인</button>
-              </div>
-              <div className="mypage_list">
-                <p>아이디</p>
-                <div>{formData.userId}</div>
               </div>
               <div className="mypage_list">
                 <p>이메일</p>

@@ -73,7 +73,7 @@ export default function MyPage() {
           <div>
             <div className="mypage_list">
               <p>닉네임</p>
-              <div>{userData.userNickname}</div>
+              <div>{userData.userNickname}</div> 
             </div>
             <div className="mypage_list">
               <p>이름</p>
