@@ -45,6 +45,12 @@ export default function DetailpostPage() {
     },
   ]);
 
+  const [formData, setFormData] = useState({
+    userUid: "",
+    postUid: "",
+    content: "",
+  });
+
   useEffect(() => {
     axios
       .get(`http://localhost:8080/detailpost?uid=${searchParams.get("uid")}`)
@@ -81,6 +87,7 @@ export default function DetailpostPage() {
         )}`
       )
       .then((resp) => {
+        console.log(resp.data);
         setCmtData(resp.data);
       });
   }, []);

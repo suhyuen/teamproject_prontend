@@ -49,66 +49,69 @@ export default function MyPage() {
   const handleClickButtonLogout = () => {
     dispatch(token(""));
     dispatch(userId(""));
+
     navigate("/");
   };
 
-  return (
-    <>
-      <Header></Header>
-      <nav className="mypage">
-        <div className="mypage_1">
-          <div>
-            <Link to="/mypage">프로필</Link>
-          </div>
-
-          <div>
-            <Link to="/myposts">내가 쓴 게시글</Link>
-          </div>
-        </div>
-
-        <div className="mypage_2">
-          <img src="/image/강아지2.jpg" width="266px" height="189px"></img>
-          <div>
-            <div className="mypage_list">
-              <p>닉네임</p>
-              <div>{userData.userNickname}</div>
-            </div>
-            <div className="mypage_list">
-              <p>이름</p>
-              <div>{userData.userName}</div>
-            </div>
-            <div className="mypage_list">
-              <p>아이디</p>
-              <div>{userData.userId}</div>
-            </div>
-            <div className="mypage_list">
-              <p>이메일</p>
-              <div>{userData.userEmail}</div>
-            </div>
-            <div className="mypage_list">
-              <p>주소</p>
-              <div>{userData.userAdress}</div>
-            </div>
-          </div>
-          <Link to="/updateuser">
-            <button className="mypage_button">
-              <img
-                src="/image/강아지_발바닥-removebg-preview.png"
-                width="47px"
-                height="47px"
-              ></img>
-
-              <p>회원 정보 수정</p>
-            </button>
-          </Link>
-        </div>
-        <div className="mypage_button2">
-          <Link to="/">
-            <button onClick={handleClickButtonLogout}>로그아웃</button>
-          </Link>
-        </div>
-      </nav>
-      <Footer></Footer>
-    </>
-  );
+  navigate("/");
 }
+
+return (
+  <>
+    <Header></Header>
+    <nav className="mypage">
+      <div className="mypage_1">
+        <div>
+          <Link to="/mypage">프로필</Link>
+        </div>
+
+        <div>
+          <Link to="/myposts">내가 쓴 게시글</Link>
+        </div>
+      </div>
+
+      <div className="mypage_2">
+        <img src="/image/강아지2.jpg" width="266px" height="189px"></img>
+        <div>
+          <div className="mypage_list">
+            <p>닉네임</p>
+            <div>{userData.userNickname}</div>
+          </div>
+          <div className="mypage_list">
+            <p>이름</p>
+            <div>{userData.userName}</div>
+          </div>
+          <div className="mypage_list">
+            <p>아이디</p>
+            <div>{userData.userId}</div>
+          </div>
+          <div className="mypage_list">
+            <p>이메일</p>
+            <div>{userData.userEmail}</div>
+          </div>
+          <div className="mypage_list">
+            <p>주소</p>
+            <div>{userData.userAdress}</div>
+          </div>
+        </div>
+        <Link to="/updateuser">
+          <button className="mypage_button">
+            <img
+              src="/image/강아지_발바닥-removebg-preview.png"
+              width="47px"
+              height="47px"
+            ></img>
+
+            <p>회원 정보 수정</p>
+          </button>
+        </Link>
+      </div>
+      <div className="mypage_button2">
+        <Link to="/">
+          <button onClick={handleClickButtonLogout}>로그아웃</button>
+        </Link>
+      </div>
+    </nav>
+    <Footer></Footer>
+  </>
+);
