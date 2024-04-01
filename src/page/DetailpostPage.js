@@ -29,10 +29,12 @@ export default function DetailpostPage() {
 
   const [liked, setLiked] = useState(false);
   const [detailPostData, setDetailPostDate] = useState({
+    uid: "",
     mainName: "",
     title: "",
     user: {
       nickname: "",
+      userUid: "",
     },
     createdAt: "",
     content: "",
@@ -43,12 +45,6 @@ export default function DetailpostPage() {
     },
   ]);
 
-  const [formData, setFormData] = useState({
-    userUid: "",
-    postUid: "",
-    content: "",
-  });
-
   useEffect(() => {
     axios
       .get(`http://localhost:8080/detailpost?uid=${searchParams.get("uid")}`)
@@ -56,14 +52,6 @@ export default function DetailpostPage() {
         setDetailPostDate(resp.data);
       });
   }, []);
-
-  const handlerInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -93,7 +81,6 @@ export default function DetailpostPage() {
         )}`
       )
       .then((resp) => {
-        console.log(resp.data);
         setCmtData(resp.data);
       });
   }, []);
@@ -118,6 +105,29 @@ export default function DetailpostPage() {
       .then((resp) => {
         console.log(resp.data);
         alert("댓글이 삭제되었습니다");
+      });
+  };
+
+  const handleDeletePost = (uid) => {
+    axios
+      .post(
+        `http://localhost:8080/detailpost/${searchParams.get(
+          "uid"
+        )}/deletepost`,
+        {
+          uid: uid,
+        },
+
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: tokenSelecter,
+          },
+        }
+      )
+      .then((resp) => {
+        alert("게시글이 삭제되었습니다");
+        navigate(`/myposts`);
       });
   };
 
@@ -212,12 +222,15 @@ export default function DetailpostPage() {
                       작성일 {detailPostData.createdAt}
                     </p>
                     <div>
-                      <Link to="/updatepost">
+                      <Link to={`/updatepost?uid=` + detailPostData.uid}>
                         <button id="detailpost-revise">수정</button>
                       </Link>
                       <button
+                        type="button"
                         id="detailpost-delete"
-                        onClick={handleClickalertButton}
+                        onClick={() => {
+                          handleDeletePost(detailPostData.uid);
+                        }}
                       >
                         삭제
                       </button>
