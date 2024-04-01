@@ -15,7 +15,7 @@ export default function MyPage() {
   const userIdSelecter = useSelector((state) => state.userId.value);
 
   const dispatch = useDispatch();
-
+  
   const [userData, setUserData] = useState({
     userNickname: "",
     userName: "",
@@ -25,93 +25,89 @@ export default function MyPage() {
   });
 
   useEffect(() => {
-    const response = axios
-      .get("http://localhost:8080/userInfo", {
-        params: { userId: userIdSelecter },
-        headers: { Authorization: tokenSelecter },
-      })
-      .then((response) => {
-        setUserData({
-          userNickname: response.data.nickname,
-          userName: response.data.username,
-          userId: response.data.userId,
-          userEmail: response.data.email,
-          userAdress: response.data.adress,
-        });
-
-        console.log(userData);
-      })
-      .catch((error) => {
-        console.error(error);
+    const response = axios.get("http://localhost:8080/userInfo", 
+    {
+      params: { userId: userIdSelecter },
+      headers: { Authorization: tokenSelecter }
+    })
+    .then((response) => {
+      setUserData({
+        userNickname : response.data.nickname,
+        userName: response.data.username,
+        userId: response.data.userId,
+        userEmail: response.data.email,
+        userAdress: response.data.adress,
       });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }, []);
 
   const handleClickButtonLogout = () => {
     dispatch(token(""));
     dispatch(userId(""));
+    navigate("/")
+  }
 
-    navigate("/");
-  };
+  const handleClickButtonUserUpdate = () => {
+    navigate("/updateuser");
+  }
 
-  navigate("/");
+  return (
+    <>
+      <Header></Header>
+      <nav className="mypage">
+        <div className="mypage_1">
+          <div>
+            <Link to="/mypage">프로필</Link>
+          </div>
+
+          <div>
+            <Link to="/myposts">내가 쓴 게시글</Link>
+          </div>
+        </div>
+
+        <div className="mypage_2">
+          <img src="/image/강아지2.jpg" width="266px" height="189px"></img>
+          <div>
+            <div className="mypage_list">
+              <p>닉네임</p>
+              <div>{userData.userNickname}</div> 
+            </div>
+            <div className="mypage_list">
+              <p>이름</p>
+              <div>{userData.userName}</div>
+            </div>
+            <div className="mypage_list">
+              <p>아이디</p>
+              <div>{userData.userId}</div>
+            </div>
+            <div className="mypage_list">
+              <p>이메일</p>
+              <div>{userData.userEmail}</div>
+            </div>
+            <div className="mypage_list">
+              <p>주소</p>
+              <div>{userData.userAdress}</div>
+            </div>
+          </div>
+            <button className="mypage_button" onClick={handleClickButtonUserUpdate}>
+              <img
+                src="/image/강아지_발바닥-removebg-preview.png"
+                width="47px"
+                height="47px"
+              ></img>
+              <p>회원 정보 수정</p>
+            </button>
+        </div>
+        <div className="mypage_button2">
+          <Link to="/">
+            <button onClick={handleClickButtonLogout}>로그아웃</button>
+          </Link>
+        </div>
+      </nav>
+      <Footer></Footer>
+    </>
+  );
 }
-
-return (
-  <>
-    <Header></Header>
-    <nav className="mypage">
-      <div className="mypage_1">
-        <div>
-          <Link to="/mypage">프로필</Link>
-        </div>
-
-        <div>
-          <Link to="/myposts">내가 쓴 게시글</Link>
-        </div>
-      </div>
-
-      <div className="mypage_2">
-        <img src="/image/강아지2.jpg" width="266px" height="189px"></img>
-        <div>
-          <div className="mypage_list">
-            <p>닉네임</p>
-            <div>{userData.userNickname}</div>
-          </div>
-          <div className="mypage_list">
-            <p>이름</p>
-            <div>{userData.userName}</div>
-          </div>
-          <div className="mypage_list">
-            <p>아이디</p>
-            <div>{userData.userId}</div>
-          </div>
-          <div className="mypage_list">
-            <p>이메일</p>
-            <div>{userData.userEmail}</div>
-          </div>
-          <div className="mypage_list">
-            <p>주소</p>
-            <div>{userData.userAdress}</div>
-          </div>
-        </div>
-        <Link to="/updateuser">
-          <button className="mypage_button">
-            <img
-              src="/image/강아지_발바닥-removebg-preview.png"
-              width="47px"
-              height="47px"
-            ></img>
-
-            <p>회원 정보 수정</p>
-          </button>
-        </Link>
-      </div>
-      <div className="mypage_button2">
-        <Link to="/">
-          <button onClick={handleClickButtonLogout}>로그아웃</button>
-        </Link>
-      </div>
-    </nav>
-    <Footer></Footer>
-  </>
-);
