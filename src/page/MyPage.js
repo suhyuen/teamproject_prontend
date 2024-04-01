@@ -38,10 +38,6 @@ export default function MyPage() {
         userEmail: response.data.email,
         userAdress: response.data.adress,
       });
-<<<<<<< HEAD
-=======
-      console.log(userData);
->>>>>>> c7eea43ef7cfed455bb6f54dfc515f91392a3317
     })
     .catch((error) => {
       console.error(error);
@@ -54,6 +50,9 @@ export default function MyPage() {
     navigate("/")
   }
 
+  const handleClickButtonUserUpdate = () => {
+    navigate("/updateuser");
+  }
 
   return (
     <>
@@ -93,17 +92,14 @@ export default function MyPage() {
               <div>{userData.userAdress}</div>
             </div>
           </div>
-          <Link to="/updateuser">
-            <button className="mypage_button">
+            <button className="mypage_button" onClick={handleClickButtonUserUpdate}>
               <img
                 src="/image/강아지_발바닥-removebg-preview.png"
                 width="47px"
                 height="47px"
               ></img>
-
               <p>회원 정보 수정</p>
             </button>
-          </Link>
         </div>
         <div className="mypage_button2">
           <Link to="/">
