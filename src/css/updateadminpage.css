@@ -9,15 +9,9 @@
   height: 1000px;
 }
 
-#adminwrite_1 {
-  font-size: 20px;
-  font-weight: bold;
-  width: 178px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-  padding: 24px;
+#admincategory {
   display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
+  gap: 120px;
 }
 
 #admincategory_1 > p {
@@ -31,6 +25,38 @@
 }
 
 #admincategory_1 > div > button {
+  width: 90px;
+  height: 31px;
+  font-size: 18px;
+  color: white;
+  background-color: #fcd11e;
+  border-radius: 34.16px;
+  border: 0px;
+  cursor: pointer;
+}
+
+#adminwrite_2 {
+  font-size: 20px;
+  font-weight: bold;
+  width: 178px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+#admincategory_2 > p {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+#admincategory_2 > div {
+  display: flex;
+  gap: 16px;
+}
+
+#admincategory_2 > div > button {
   width: 90px;
   height: 31px;
   font-size: 18px;
