@@ -35,21 +35,21 @@ export default function HomePage() {
     <div className="main2_grid">
       {tipData.slice(0, 2).map((data) => (
         <div className="main2_img">
-          <img src="/image/만화1.webp" width="474px" height="300px"></img>
+          <img src="/image/강아지사진12.jpg" width="474px" height="300px"></img>
           <Link
             to={`/detailpost?uid=${data.uid}`}
             state={"tip"}
             onClick={handleClick}
           >
-            <p>{data.title}</p>
+            <p id="tip_p">{data.title}</p>
           </Link>
         </div>
       ))}
       {tipData.slice(2, 4).map((data) => (
         <div className="main2_img">
-          <img src="/image/만화1.webp" width="474px" height="300px"></img>
+          <img src="/image/강아지사진12.jpg" width="474px" height="300px"></img>
           <Link to={`/detailpost?uid=${data.uid}`} onClick={handleClick}>
-            <p>{data.title}</p>
+            <p id="tip_p1">{data.title}</p>
           </Link>
         </div>
       ))}

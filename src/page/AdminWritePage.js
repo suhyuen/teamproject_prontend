@@ -74,7 +74,7 @@ export default function AdminWritePage() {
         },
       })
       .then(() => {
-        navigate("/notice", { replace: true });
+        navigate("/", { replace: true });
       });
   };
 
