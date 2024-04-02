@@ -1,10 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/mypage.css";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { token } from "../app/tokenSlice";
+import { userId } from "../app/userSlice";
 
 export default function MyPage() {
+  const navigate = useNavigate();
+
+  const tokenSelecter = useSelector((state) => state.token.value);
+  const userIdSelecter = useSelector((state) => state.userId.value);
+
+  const dispatch = useDispatch();
+
   const [userData, setUserData] = useState({
     userNickname: "홍길동",
     userName: "홍길동",
@@ -12,6 +23,37 @@ export default function MyPage() {
     userEmail: "email",
     userAdress: "adress",
   });
+
+  useEffect(() => {
+    const response = axios
+      .get("http://localhost:8080/userInfo", {
+        params: { userId: userIdSelecter },
+        headers: { Authorization: tokenSelecter },
+      })
+      .then((response) => {
+        setUserData({
+          userNickname: response.data.nickname,
+          userName: response.data.username,
+          userId: response.data.userId,
+          userEmail: response.data.email,
+          userAdress: response.data.adress,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const handleClickButtonLogout = () => {
+    dispatch(token(""));
+    dispatch(userId(""));
+    navigate("/");
+  };
+
+  const handleClickButtonUserUpdate = () => {
+    navigate("/updateuser");
+  };
+
   return (
     <>
       <Header></Header>
@@ -50,21 +92,21 @@ export default function MyPage() {
               <div>{userData.userAdress}</div>
             </div>
           </div>
-          <Link to="/updateuser">
-            <button className="mypage_button">
-              <img
-                src="/image/강아지_발바닥-removebg-preview.png"
-                width="47px"
-                height="47px"
-              ></img>
-
-              <p>회원 정보 수정</p>
-            </button>
-          </Link>
+          <button
+            className="mypage_button"
+            onClick={handleClickButtonUserUpdate}
+          >
+            <img
+              src="/image/강아지_발바닥-removebg-preview.png"
+              width="47px"
+              height="47px"
+            ></img>
+            <p>회원 정보 수정</p>
+          </button>
         </div>
         <div className="mypage_button2">
           <Link to="/">
-            <button>로그아웃</button>
+            <button onClick={handleClickButtonLogout}>로그아웃</button>
           </Link>
         </div>
       </nav>

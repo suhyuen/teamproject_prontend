@@ -1,4 +1,5 @@
 .findIdContaner{
+	height: 700px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -14,20 +15,19 @@
     flex-direction: column;
     align-items: center;
 	gap: 30px;
+	margin-bottom: 50px;
 }
 .findIdInfo > input{
 	all: unset;
     width: 372px;
 	border-bottom: solid 2px #FCD11E;
 }
-.findIdInfo:last-child > input{
-	margin-top: 60px;
-}
+
 .findIdInfo > input::placeholder{
 	color: rgb(143, 143, 143);
 	font-size: 12px;
 }
-.findIdButton, .certifiedButton{
+.findIdButton{
 	all: unset;
 	margin: 30px 0px 10px 0px;
     width: 300px;
