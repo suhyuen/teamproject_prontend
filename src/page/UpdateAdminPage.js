@@ -95,7 +95,7 @@ export default function UpdateAdminPage() {
         },
       })
       .then(() => {
-        navigate("/notice", { replace: true });
+        navigate("/", { replace: true });
       });
   };
 

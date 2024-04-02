@@ -46,7 +46,7 @@ nav {
 .main2_grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 28px 60px;
+  gap: 28px 14px;
 }
 
 .main2_img {
@@ -59,7 +59,12 @@ nav {
   margin-bottom: 24px;
 }
 
-.main2_img > p {
+#tip_p {
+  margin-bottom: 40px;
+  font-size: 24px;
+}
+
+#tip_p1 {
   margin-bottom: 40px;
   font-size: 24px;
 }
