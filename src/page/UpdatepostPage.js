@@ -30,7 +30,10 @@ export default function UpdatepostPage() {
   };
 
   const [formData, setFormData] = useState({
-    uid: "",
+    uid: searchParams.get("uid"),
+    user: {
+      userUid: "",
+    },
     userUid: "",
     pageUid: "",
     mainUid: "",
@@ -73,18 +76,16 @@ export default function UpdatepostPage() {
         }
       )
       .then((resp) => {
-        console.log(postData);
         setPostData(resp.data);
       });
   }, []);
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    console.log(e);
 
     axios
       .post(
-        `http://localhost:8080/updatepost?uid=${searchParams.get("uid")}`,
+        `http://localhost:8080/updatepost/${searchParams.get("uid")}`,
         formData,
         {
           headers: {
@@ -94,8 +95,8 @@ export default function UpdatepostPage() {
         }
       )
       .then((e) => {
-        navigate("/myposts");
         alert("수정되었습니다.");
+        navigate("/myposts");
       });
   };
 
@@ -189,9 +190,8 @@ export default function UpdatepostPage() {
               </div>
             </div>
             <div className="write_button">
-              <Link to="/myposts">
-                <button type="submit">수정</button>
-              </Link>
+              <button type="submit">수정</button>
+
               <Link to="/">
                 <button>취소</button>
               </Link>

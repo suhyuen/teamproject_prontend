@@ -38,12 +38,9 @@ export default function DetailpostPage() {
     },
     createdAt: "",
     content: "",
+    mainUid: "",
+    pageUid: "",
   });
-  const [dpostListData, setDpostListDate] = useState([
-    {
-      category: "dog",
-    },
-  ]);
 
   const [formData, setFormData] = useState({
     userUid: "",
@@ -56,6 +53,7 @@ export default function DetailpostPage() {
       .get(`http://localhost:8080/detailpost?uid=${searchParams.get("uid")}`)
       .then((resp) => {
         setDetailPostDate(resp.data);
+        console.log(detailPostData);
       });
   }, []);
 
@@ -87,8 +85,8 @@ export default function DetailpostPage() {
         )}`
       )
       .then((resp) => {
-        console.log(resp.data);
         setCmtData(resp.data);
+        console.log(detailPostData);
       });
   }, []);
 
@@ -153,21 +151,6 @@ export default function DetailpostPage() {
   const handleLikeClick = () => {
     setLiked(!liked);
   };
-
-  const dpostList = dpostListData.map((data) => {
-    return (
-      <Link to="/notice" onClick={handleClick}>
-        <button id="detailpost-listbntn">
-          <img
-            id="detailpost-buttonimg"
-            src="/image/pawbutton.png"
-            alt="paw"
-          ></img>
-          목록 페이지
-        </button>
-      </Link>
-    );
-  });
 
   const cmtList = cmtData.map((data) => {
     return (
@@ -245,7 +228,10 @@ export default function DetailpostPage() {
                   </li>
                 </ul>
               </div>
-              <div id="detailpost-maincontent1">{detailPostData.content}</div>
+              <div
+                id="detailpost-maincontent1"
+                dangerouslySetInnerHTML={{ __html: detailPostData.content }}
+              ></div>
             </div>
             <div id="detailpost-likebtndiv">
               <button
@@ -279,7 +265,6 @@ export default function DetailpostPage() {
               </form>
             </div>
           </div>
-          <div id="detailpost-listbntndiv">{dpostList}</div>
         </div>
       </div>
       <Footer />

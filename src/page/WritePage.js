@@ -35,6 +35,7 @@ export default function WritePage() {
 
   const handlesubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
 
     axios
       .post("http://localhost:8080/write", formData, {
