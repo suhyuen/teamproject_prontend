@@ -3,6 +3,9 @@ import Header from "../component/Header.js";
 import Footer from "../component/Footer.js";
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { userId } from "../app/userSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function FindpasswordPage() {
   const [formData, setFormData] = useState({
@@ -10,18 +13,21 @@ export default function FindpasswordPage() {
     email:"",
     authNum:"",
     newPassword:"",
-    ReNewPassword:""
+    reNewPassword:""
   })
+
+  const dispatch = useDispatch();
+  const userIdSelecter = useSelector((state) => state.userId.value);
+  const navigate = useNavigate();
 
   const handleChangeInput = (e) => {
     const {name , value} = e.target;
     setFormData({...formData, [name]:value});
   }
 
-console.log(formData)
-
-  const handleClickAuthnum = () => {
-      axios.post(
+  const handleClickAuthnum = async(e) => {
+      e.preventDefault();
+      await axios.post(
           "http://localhost:8080/sendmail",
           {
             userId: formData.userId,
@@ -30,16 +36,26 @@ console.log(formData)
           {
               headers: {"Content-Type": "application/json"}
           }
-      );
-      alert("인증번호가 발송되었습니다.")
+      ).then((resp) => {
+        alert(resp.data === true ? "인증번호가 발송되었습니다.":"인증번호 발송에 실패하였습니다. id와 pw를 확인해주세요");
+        if(resp.data === true){
+          dispatch(userId(formData.userId)); 
+        }; 
+      })
   }
 
-  const handleClickFindpw = () => {
+  const handleClickFindpw = async(e) => {
+    e.preventDefault();
     const passwordRegex = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\W)(?=\S+$).{8,20}/;
-     if(formData.userPw === formData.reUserPw && passwordRegex.test(formData.newPassword) === true){
-      axios.post(
-        "http://localhost:8080/sendmail",
+    const authCode = /^[0-9]$/;
+     if(authCode.test(formData.authNum) !== true 
+      && formData.authNum !== ""
+      && formData.newPassword === formData.reNewPassword 
+      && passwordRegex.test(formData.newPassword) === true){
+      const response = await axios.post(
+        "http://localhost:8080/rePassword",
         {
+          userId: userIdSelecter,
           code: formData.authNum,
           newPassword: formData.newPassword
         },
@@ -47,11 +63,14 @@ console.log(formData)
             headers: {"Content-Type": "application/json"}
         }
       );
-      alert("페스워드 변경이 완료되었습니다.");
-     }else if(formData.userPw !== formData.reUserPw) {
-        alert("페스워드가 서로 다릅니다.");
-     }else if(passwordRegex.test(formData.userPw) !== true){
-        alert("비밀번호는 영문 대,소문자와 숫자, 특수기호가 적어도 1개 이상씩 포함된 8자 ~ 20자의 비밀번호여야 합니다.");
+        if(response.data === true){
+          alert("패스워드 변경이 완료됐습니다.");
+          navigate("/")
+        }else{
+          alert("패스워드 변경에 실패했습니다. 관리자에게 문의해주세요.")
+        }
+     }else{
+        alert("입력양식을 확인해주세요");
      }
   }
 
@@ -85,7 +104,7 @@ console.log(formData)
                 src="/image/pawbutton.png"
                 alt="paw"
               ></img>
-              인증번호 확인
+              새패스워드 만들기
             </button>
           </form>
         </div>

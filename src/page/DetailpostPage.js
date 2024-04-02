@@ -2,13 +2,21 @@ import "../css/detailpostpage.css";
 import Header from "../component/Header.js";
 import Footer from "../component/Footer.js";
 import { useState, useEffect } from "react";
-import { Link, useSearchParams, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useSearchParams,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
 export default function DetailpostPage() {
+  const location = useLocation();
+  const cameFromNotice =
+    location.state === "notice" || location.state === "tip";
   const [searchParams, setSearchParams] = useSearchParams();
   const tokenSelecter = useSelector((state) => state.token.value);
   const navigate = useNavigate();
@@ -38,12 +46,9 @@ export default function DetailpostPage() {
     },
     createdAt: "",
     content: "",
+    mainUid: "",
+    pageUid: "",
   });
-  const [dpostListData, setDpostListDate] = useState([
-    {
-      category: "dog",
-    },
-  ]);
 
   const [formData, setFormData] = useState({
     userUid: "",
@@ -56,6 +61,7 @@ export default function DetailpostPage() {
       .get(`http://localhost:8080/detailpost?uid=${searchParams.get("uid")}`)
       .then((resp) => {
         setDetailPostDate(resp.data);
+        console.log(detailPostData);
       });
   }, []);
 
@@ -87,8 +93,8 @@ export default function DetailpostPage() {
         )}`
       )
       .then((resp) => {
-        console.log(resp.data);
         setCmtData(resp.data);
+        console.log(detailPostData);
       });
   }, []);
 
@@ -154,21 +160,6 @@ export default function DetailpostPage() {
     setLiked(!liked);
   };
 
-  const dpostList = dpostListData.map((data) => {
-    return (
-      <Link to="/notice" onClick={handleClick}>
-        <button id="detailpost-listbntn">
-          <img
-            id="detailpost-buttonimg"
-            src="/image/pawbutton.png"
-            alt="paw"
-          ></img>
-          목록 페이지
-        </button>
-      </Link>
-    );
-  });
-
   const cmtList = cmtData.map((data) => {
     return (
       <div key={data.uid} id="detailpost-cmttitle">
@@ -229,7 +220,13 @@ export default function DetailpostPage() {
                       작성일 {detailPostData.createdAt}
                     </p>
                     <div>
-                      <Link to={`/updatepost?uid=` + detailPostData.uid}>
+                      <Link
+                        to={
+                          cameFromNotice
+                            ? `/updateadminpost?uid=${searchParams.get("uid")}`
+                            : `/updatepost?uid=` + detailPostData.uid
+                        }
+                      >
                         <button id="detailpost-revise">수정</button>
                       </Link>
                       <button
@@ -245,7 +242,10 @@ export default function DetailpostPage() {
                   </li>
                 </ul>
               </div>
-              <div id="detailpost-maincontent1">{detailPostData.content}</div>
+              <div
+                id="detailpost-maincontent1"
+                dangerouslySetInnerHTML={{ __html: detailPostData.content }}
+              ></div>
             </div>
             <div id="detailpost-likebtndiv">
               <button
@@ -279,7 +279,6 @@ export default function DetailpostPage() {
               </form>
             </div>
           </div>
-          <div id="detailpost-listbntndiv">{dpostList}</div>
         </div>
       </div>
       <Footer />

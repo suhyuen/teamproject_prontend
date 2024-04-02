@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "../css/swiper.css";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 // Import Swiper styles
 import "swiper/css";
@@ -13,46 +14,82 @@ import React from "react";
 import Footer from "../component/Footer";
 
 export default function HomePage() {
-  const [postData, setPostData] = useState([
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
+
+  const [tipData, setTipData] = useState([
     {
-      title: "제목입니다",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "0",
-    },
-    {
-      title: "제목입니다",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "0",
-    },
-    {
-      title: "제목입니다",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "0",
-    },
-    {
-      title: "제목입니다",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "0",
-    },
-    {
-      title: "제목입니다",
-      nickname: "작성자",
-      createdAt: "0000.00.00",
-      viewer: "0",
+      title: "",
     },
   ]);
 
-  const boardList = postData.map((data) => {
+  useEffect(() => {
+    axios.get("http://localhost:8080/tip").then((resp) => {
+      const reversedTipData = [...resp.data].reverse();
+      setTipData(reversedTipData);
+    });
+  }, []);
+
+  const boardList1 = (
+    <div className="main2_grid">
+      {tipData.slice(0, 2).map((data) => (
+        <div className="main2_img">
+          <img src="/image/강아지사진12.jpg" width="474px" height="300px"></img>
+          <Link
+            to={`/detailpost?uid=${data.uid}`}
+            state={"tip"}
+            onClick={handleClick}
+          >
+            <p id="tip_p">{data.title}</p>
+          </Link>
+        </div>
+      ))}
+      {tipData.slice(2, 4).map((data) => (
+        <div className="main2_img">
+          <img src="/image/강아지사진12.jpg" width="474px" height="300px"></img>
+          <Link to={`/detailpost?uid=${data.uid}`} onClick={handleClick}>
+            <p id="tip_p1">{data.title}</p>
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
+  const [postData, setPostData] = useState([
+    {
+      title: "",
+      nickname: "",
+      createdAt: "",
+      viewer: "",
+    },
+  ]);
+  useEffect(() => {
+    axios.get("http://localhost:8080/homenotice").then((resp) => {
+      setPostData(resp.data);
+    });
+  }, []);
+  const boardList = postData.slice(0, 5).map((data) => {
+    const createdAtDate = new Date(data.createdAt);
+    const formattedCreatedAt = `${createdAtDate.getFullYear()}-${(
+      createdAtDate.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, "0")}-${createdAtDate
+      .getDate()
+      .toString()
+      .padStart(2, "0")}`;
     return (
       <div className="main3_list">
-        <div>{data.title}</div>
+        <Link
+          to={`/detailpost?uid=${data.uid}`}
+          state={"notice"}
+          onClick={handleClick}
+        >
+          <div id="homenotice">{data.title}</div>
+        </Link>
         <div>
           <p>{data.nickname}</p>
-          <p>작성일 {data.createdAt}</p>
+          <p>작성일 {formattedCreatedAt}</p>
           <p>조회 {data.viewer}</p>
         </div>
       </div>
@@ -123,30 +160,7 @@ export default function HomePage() {
 
         <div className="main2">
           <div>정보&팁</div>
-          <div>
-            <div className="main2_img">
-              <img src="/image/만화1.webp" width="474px" height="300px"></img>
-              <p>제목</p>
-            </div>
-            <div className="main2_img">
-              <img
-                src="/image/강아지사진12.jpg"
-                width="474px"
-                height="300px"
-              ></img>
-              <p>제목</p>
-            </div>
-          </div>
-          <div>
-            <div className="main2_img">
-              <img src="/image/동물2.jpg" width="474px" height="300px"></img>
-              <p>제목</p>
-            </div>
-            <div className="main2_img">
-              <img src="/image/강아지1.webp" width="474px" height="300px"></img>
-              <p>제목</p>
-            </div>
-          </div>
+          <div>{boardList1}</div>
         </div>
         <div className="main3">
           <div className="main3_1">
@@ -154,7 +168,9 @@ export default function HomePage() {
             <div>
               <div>+</div>
               <div>
-                <Link to="notice">더보기</Link>
+                <Link to="notice" onClick={handleClick}>
+                  더보기
+                </Link>
               </div>
             </div>
           </div>
