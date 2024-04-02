@@ -29,19 +29,18 @@ export default function DetailpostPage() {
 
   const [liked, setLiked] = useState(false);
   const [detailPostData, setDetailPostDate] = useState({
+    uid: "",
     mainName: "",
     title: "",
     user: {
       nickname: "",
+      userUid: "",
     },
     createdAt: "",
     content: "",
+    mainUid: "",
+    pageUid: "",
   });
-  const [dpostListData, setDpostListDate] = useState([
-    {
-      category: "dog",
-    },
-  ]);
 
   const [formData, setFormData] = useState({
     userUid: "",
@@ -54,16 +53,9 @@ export default function DetailpostPage() {
       .get(`http://localhost:8080/detailpost?uid=${searchParams.get("uid")}`)
       .then((resp) => {
         setDetailPostDate(resp.data);
+        console.log(detailPostData);
       });
   }, []);
-
-  const handlerInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -93,8 +85,8 @@ export default function DetailpostPage() {
         )}`
       )
       .then((resp) => {
-        console.log(resp.data);
         setCmtData(resp.data);
+        console.log(detailPostData);
       });
   }, []);
 
@@ -121,6 +113,29 @@ export default function DetailpostPage() {
       });
   };
 
+  const handleDeletePost = (uid) => {
+    axios
+      .post(
+        `http://localhost:8080/detailpost/${searchParams.get(
+          "uid"
+        )}/deletepost`,
+        {
+          uid: uid,
+        },
+
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: tokenSelecter,
+          },
+        }
+      )
+      .then((resp) => {
+        alert("게시글이 삭제되었습니다");
+        navigate(`/myposts`);
+      });
+  };
+
   const handleClickalertButton = () => {
     alert("삭제되었습니다.");
   };
@@ -136,21 +151,6 @@ export default function DetailpostPage() {
   const handleLikeClick = () => {
     setLiked(!liked);
   };
-
-  const dpostList = dpostListData.map((data) => {
-    return (
-      <Link to="/notice" onClick={handleClick}>
-        <button id="detailpost-listbntn">
-          <img
-            id="detailpost-buttonimg"
-            src="/image/pawbutton.png"
-            alt="paw"
-          ></img>
-          목록 페이지
-        </button>
-      </Link>
-    );
-  });
 
   const cmtList = cmtData.map((data) => {
     return (
@@ -212,12 +212,15 @@ export default function DetailpostPage() {
                       작성일 {detailPostData.createdAt}
                     </p>
                     <div>
-                      <Link to="/updatepost">
+                      <Link to={`/updatepost?uid=` + detailPostData.uid}>
                         <button id="detailpost-revise">수정</button>
                       </Link>
                       <button
+                        type="button"
                         id="detailpost-delete"
-                        onClick={handleClickalertButton}
+                        onClick={() => {
+                          handleDeletePost(detailPostData.uid);
+                        }}
                       >
                         삭제
                       </button>
@@ -225,7 +228,10 @@ export default function DetailpostPage() {
                   </li>
                 </ul>
               </div>
-              <div id="detailpost-maincontent1">{detailPostData.content}</div>
+              <div
+                id="detailpost-maincontent1"
+                dangerouslySetInnerHTML={{ __html: detailPostData.content }}
+              ></div>
             </div>
             <div id="detailpost-likebtndiv">
               <button
@@ -259,7 +265,6 @@ export default function DetailpostPage() {
               </form>
             </div>
           </div>
-          <div id="detailpost-listbntndiv">{dpostList}</div>
         </div>
       </div>
       <Footer />

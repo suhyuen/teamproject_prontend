@@ -12,7 +12,7 @@ export default function LoginPage(){
     const [formData, setFormData] = useState({userId:"", userPw:""});
 
     const dispatch = useDispatch();
-    const tokenSelecter = useSelector((state) => state.token.value);
+    //const tokenSelecter = useSelector((state) => state.token.value); 테스트시 이상없으면
 
     const navgate = useNavigate();
     const handleChangeInput = (e) => {
@@ -35,6 +35,7 @@ export default function LoginPage(){
             if(response.headers !== null){
                 dispatch(token(response.headers.authorization));
                 dispatch(userId(formData.userId));
+                alert(formData.userId + "님 안녕하세요 방문해주셔서 감사합니다.");
                 navgate("/")
             }
         } catch (error) {
