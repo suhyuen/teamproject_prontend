@@ -5,67 +5,64 @@ import Footer from "../component/Footer.js";
 import { useState, useEffect } from "react";
 import Pagination from "react-js-pagination";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function NoticePage() {
   const handleClick = () => {
     window.scrollTo(0, 0);
   };
-  const [page, setPage] = useState(1);
 
-  const handlePageChange = (page) => {
-    setPage(page);
-  };
-  const [noticeData, setNoticeDate] = useState([
+  const [page, setPage] = useState(1);
+  const [adminpostList, setAdminPostList] = useState([
     {
-      uid: "1",
-      title: "공지사항 제목입니다.",
-      nickname: "닉네임",
-      createdAt: "0000.00.00",
-      viewer: "0",
-    },
-    {
-      uid: "2",
-      title: "공지사항 제목입니다.",
-      nickname: "닉네임",
-      createdAt: "0000.00.00",
-      viewer: "0",
-    },
-    {
-      uid: "3",
-      title: "공지사항 제목입니다.",
-      nickname: "닉네임",
-      createdAt: "0000.00.00",
-      viewer: "0",
-    },
-    {
-      uid: "4",
-      title: "공지사항 제목입니다.",
-      nickname: "닉네임",
-      createdAt: "0000.00.00",
-      viewer: "0",
-    },
-    {
-      uid: "5",
-      title: "공지사항 제목입니다.",
-      nickname: "닉네임",
-      createdAt: "0000.00.00",
-      viewer: "0",
+      uid: "",
+      title: "",
+      content: "",
+      nickname: "",
+      createdAt: "",
+      viewer: "",
     },
   ]);
 
-  const noticeList = noticeData.map((data) => {
+  const itemsPerPage = 5;
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/notice").then((resp) => {
+      setAdminPostList(resp.data);
+    });
+  }, []);
+
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentPageData = adminpostList.slice(startIndex, endIndex);
+
+  const noticeList = currentPageData.map((data) => {
+    const createdAtDate = new Date(data.createdAt);
+    const formattedDate = `${createdAtDate.getFullYear()}-${(
+      createdAtDate.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, "0")}-${createdAtDate
+      .getDate()
+      .toString()
+      .padStart(2, "0")}`;
+
     return (
-      <div id="notice-listcontent">
+      <div key={data.uid} id="notice-listcontent">
         <div id="notice-listnumber">
           <p>{data.uid}</p>
         </div>
         <div id="notice-listcontent1">
-          <Link to={"/detailpost"} onClick={handleClick}>
+          <Link
+            to={`/detailpost?uid=${data.uid}`}
+            state={"notice"}
+            onClick={handleClick}
+          >
             <p id="notice-listcontent1p">{data.title}</p>
           </Link>
           <ul id="notice-listcontent2">
             <li>{data.nickname}</li>
-            <li>작성일 {data.createdAt}</li>
+            <li>작성일 {formattedDate}</li>
             <li>조회 {data.viewer}</li>
           </ul>
         </div>
@@ -105,12 +102,12 @@ export default function NoticePage() {
           </form>
           <Pagination
             activePage={page}
-            itemsCountPerPage={5}
-            totalItemsCount={450}
+            itemsCountPerPage={itemsPerPage}
+            totalItemsCount={adminpostList.length}
             pageRangeDisplayed={5}
             prevPageText={"‹"}
             nextPageText={"›"}
-            onChange={handlePageChange}
+            onChange={setPage}
           />
         </div>
       </div>

@@ -20,6 +20,11 @@
   margin-bottom: 40px;
 }
 
+#admincategory {
+  display: flex;
+  gap: 120px;
+}
+
 #admincategory_1 > p {
   margin-bottom: 16px;
   font-size: 16px;
@@ -31,6 +36,37 @@
 }
 
 #admincategory_1 > div > button {
+  width: 90px;
+  height: 31px;
+  font-size: 18px;
+  color: white;
+  border-radius: 34.16px;
+  border: 0px;
+  cursor: pointer;
+}
+
+#adminwrite_2 {
+  font-size: 20px;
+  font-weight: bold;
+  width: 178px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+#admincategory_2 > p {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+#admincategory_2 > div {
+  display: flex;
+  gap: 16px;
+}
+
+#admincategory_2 > div > button {
   width: 90px;
   height: 31px;
   font-size: 18px;
@@ -70,6 +106,17 @@
   gap: 16px;
   margin-top: 40px;
   justify-content: flex-end;
+}
+
+#tonadminwrite_but > button {
+  width: 82px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #fcd11e;
+  border-radius: 34.16px;
+  border: 0px;
+  cursor: pointer;
 }
 
 #tonadminwrite_but > a > button {

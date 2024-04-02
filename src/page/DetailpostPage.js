@@ -2,13 +2,21 @@ import "../css/detailpostpage.css";
 import Header from "../component/Header.js";
 import Footer from "../component/Footer.js";
 import { useState, useEffect } from "react";
-import { Link, useSearchParams, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useSearchParams,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
 export default function DetailpostPage() {
+  const location = useLocation();
+  const cameFromNotice =
+    location.state === "notice" || location.state === "tip";
   const [searchParams, setSearchParams] = useSearchParams();
   const tokenSelecter = useSelector((state) => state.token.value);
   const navigate = useNavigate();
@@ -212,7 +220,13 @@ export default function DetailpostPage() {
                       작성일 {detailPostData.createdAt}
                     </p>
                     <div>
-                      <Link to={`/updatepost?uid=` + detailPostData.uid}>
+                      <Link
+                        to={
+                          cameFromNotice
+                            ? `/updateadminpost?uid=${searchParams.get("uid")}`
+                            : `/updatepost?uid=` + detailPostData.uid
+                        }
+                      >
                         <button id="detailpost-revise">수정</button>
                       </Link>
                       <button
