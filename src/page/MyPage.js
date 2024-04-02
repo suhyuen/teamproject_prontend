@@ -15,7 +15,7 @@ export default function MyPage() {
   const userIdSelecter = useSelector((state) => state.userId.value);
 
   const dispatch = useDispatch();
-
+  
   const [userData, setUserData] = useState({
     userNickname: "홍길동",
     userName: "홍길동",
@@ -25,6 +25,20 @@ export default function MyPage() {
   });
 
   useEffect(() => {
+<<<<<<< HEAD
+    const response = axios.get("http://localhost:8080/userInfo", 
+    {
+      params: { userId: userIdSelecter },
+      headers: { Authorization: tokenSelecter }
+    })
+    .then((response) => {
+      setUserData({
+        userNickname : response.data.nickname,
+        userName: response.data.username,
+        userId: response.data.userId,
+        userEmail: response.data.email,
+        userAdress: response.data.adress,
+=======
     const response = axios
       .get("http://localhost:8080/userInfo", {
         params: { userId: userIdSelecter },
@@ -41,12 +55,26 @@ export default function MyPage() {
       })
       .catch((error) => {
         console.error(error);
+>>>>>>> 167da70c2cf70136b9db53167e3739dc45063453
       });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }, []);
 
   const handleClickButtonLogout = () => {
     dispatch(token(""));
     dispatch(userId(""));
+<<<<<<< HEAD
+    navigate("/")
+  }
+
+  const handleClickButtonUserUpdate = () => {
+    navigate("/updateuser");
+  }
+
+=======
     navigate("/");
   };
 
@@ -54,6 +82,7 @@ export default function MyPage() {
     navigate("/updateuser");
   };
 
+>>>>>>> 167da70c2cf70136b9db53167e3739dc45063453
   return (
     <>
       <Header></Header>
@@ -73,7 +102,11 @@ export default function MyPage() {
           <div>
             <div className="mypage_list">
               <p>닉네임</p>
+<<<<<<< HEAD
+              <div>{userData.userNickname}</div> 
+=======
               <div>{userData.userNickname}</div>
+>>>>>>> 167da70c2cf70136b9db53167e3739dc45063453
             </div>
             <div className="mypage_list">
               <p>이름</p>
@@ -92,6 +125,16 @@ export default function MyPage() {
               <div>{userData.userAdress}</div>
             </div>
           </div>
+<<<<<<< HEAD
+            <button className="mypage_button" onClick={handleClickButtonUserUpdate}>
+              <img
+                src="/image/강아지_발바닥-removebg-preview.png"
+                width="47px"
+                height="47px"
+              ></img>
+              <p>회원 정보 수정</p>
+            </button>
+=======
           <button
             className="mypage_button"
             onClick={handleClickButtonUserUpdate}
@@ -103,6 +146,7 @@ export default function MyPage() {
             ></img>
             <p>회원 정보 수정</p>
           </button>
+>>>>>>> 167da70c2cf70136b9db53167e3739dc45063453
         </div>
         <div className="mypage_button2">
           <Link to="/">

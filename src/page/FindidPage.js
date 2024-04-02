@@ -14,7 +14,9 @@ export default function FindidPage(){
     const navigate = useNavigate();
 
     // 팝업 출력 이벤트
-    const handleClickFindIdButton = async() => {
+    const handleClickFindIdButton = async(e) => {
+        e.preventDefault();
+        
         const response = await axios.get(
             "http://localhost:8080/findId", 
         {
