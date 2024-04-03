@@ -31,7 +31,7 @@ export default function MypostPage() {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:8080/myposts",
+        `${process.env.REACT_APP_API_URL}/myposts`,
         {},
         {
           headers: {

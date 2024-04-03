@@ -55,7 +55,7 @@ export default function CatpostPage() {
   ]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/catposts?pageUid=3").then((resp) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/catposts?pageUid=3`).then((resp) => {
       setPostData(resp.data);
     });
   }, []);

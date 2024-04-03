@@ -60,7 +60,7 @@ export default function DogpostPage() {
   ]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/dogposts?pageUid=2").then((resp) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/dogposts?pageUid=2`).then((resp) => {
       setPostData(resp.data);
     });
   }, []);

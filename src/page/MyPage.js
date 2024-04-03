@@ -25,7 +25,7 @@ export default function MyPage() {
   });
 
   useEffect(() => {
-    const response = axios.get("http://localhost:8080/userInfo", 
+    const response = axios.get(`${process.env.REACT_APP_API_URL}/userInfo`, 
     {
       params: { userId: userIdSelecter },
       headers: { Authorization: tokenSelecter }
@@ -47,8 +47,8 @@ export default function MyPage() {
   const handleClickButtonLogout = () => {
     dispatch(token(""));
     dispatch(userId(""));
-    navigate("/");
-  };
+    navigate("/")
+  }
 
   const handleClickButtonUserUpdate = () => {
     navigate("/updateuser");
@@ -72,7 +72,7 @@ export default function MyPage() {
           <div>
             <div className="mypage_list">
               <p>닉네임</p>
-              <div>{userData.userNickname}</div>
+              <div>{userData.userNickname}</div> 
             </div>
             <div className="mypage_list">
               <p>이름</p>

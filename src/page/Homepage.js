@@ -25,7 +25,7 @@ export default function HomePage() {
   ]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/tip").then((resp) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/tip`).then((resp) => {
       const reversedTipData = [...resp.data].reverse();
       setTipData(reversedTipData);
     });
@@ -64,7 +64,7 @@ export default function HomePage() {
     },
   ]);
   useEffect(() => {
-    axios.get("http://localhost:8080/homenotice").then((resp) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/homenotice`).then((resp) => {
       setPostData(resp.data);
     });
   }, []);

@@ -38,7 +38,7 @@ export default function WritePage() {
     console.log(formData);
 
     axios
-      .post("http://localhost:8080/write", formData, {
+      .post(`${process.env.REACT_APP_API_URL}/write`, formData, {
         headers: {
           "Content-Type": "application/json",
           Authorization: tokenSelecter,

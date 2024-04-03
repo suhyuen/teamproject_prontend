@@ -55,7 +55,7 @@ export default function EtcpostPage() {
   ]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/etcposts?pageUid=4").then((resp) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/etcposts?pageUid=4`).then((resp) => {
       setPostData(resp.data);
     });
   }, []);

@@ -48,7 +48,7 @@ export default function UpdateAdminPage() {
   const fetchAdminPost = () => {
     axios
       .get(
-        "http://localhost:8080/updateadminpost?uid=" + searchParams.get("uid"),
+        `${process.env.REACT_APP_API_URL}/updateadminpost?uid=` + searchParams.get("uid"),
         {
           headers: {
             Authorization: tokenSelecter,
@@ -88,7 +88,7 @@ export default function UpdateAdminPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/updateadminpost", updateAdminFormData, {
+      .post(`${process.env.REACT_APP_API_URL}/updateadminpost`, updateAdminFormData, {
         headers: {
           "Content-Type": "application/json",
           Authorization: tokenSelecter,

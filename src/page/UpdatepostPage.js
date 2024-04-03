@@ -66,7 +66,7 @@ export default function UpdatepostPage() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8080/detailpost?uid=${searchParams.get("uid")}`,
+        `${process.env.REACT_APP_API_URL}/detailpost?uid=${searchParams.get("uid")}`,
         {},
         {
           headers: {
@@ -85,7 +85,7 @@ export default function UpdatepostPage() {
 
     axios
       .post(
-        `http://localhost:8080/updatepost/${searchParams.get("uid")}`,
+        `${process.env.REACT_APP_API_URL}/updatepost/${searchParams.get("uid")}`,
         formData,
         {
           headers: {
