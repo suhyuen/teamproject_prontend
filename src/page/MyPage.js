@@ -52,7 +52,7 @@ export default function MyPage() {
 
   const handleClickButtonUserUpdate = () => {
     navigate("/updateuser");
-  }
+  };
   return (
     <>
       <Header></Header>
