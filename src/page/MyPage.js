@@ -25,7 +25,7 @@ export default function MyPage() {
   });
 
   useEffect(() => {
-    const response = axios.get("http://localhost:8080/userInfo", 
+    const response = axios.get(`${process.env.REACT_APP_API_URL}/userInfo`, 
     {
       params: { userId: userIdSelecter },
       headers: { Authorization: tokenSelecter }

@@ -28,7 +28,7 @@ export default function FindpasswordPage() {
   const handleClickAuthnum = async(e) => {
       e.preventDefault();
       await axios.post(
-          "http://localhost:8080/sendmail",
+        `${process.env.REACT_APP_API_URL}/sendmail`,
           {
             userId: formData.userId,
             email: formData.email
@@ -53,7 +53,7 @@ export default function FindpasswordPage() {
       && formData.newPassword === formData.reNewPassword 
       && passwordRegex.test(formData.newPassword) === true){
       const response = await axios.post(
-        "http://localhost:8080/rePassword",
+        `${process.env.REACT_APP_API_URL}/rePassword`,
         {
           userId: userIdSelecter,
           code: formData.authNum,

@@ -18,7 +18,7 @@ export default function FindidPage(){
         e.preventDefault();
         
         const response = await axios.get(
-            "http://localhost:8080/findId", 
+            `${process.env.REACT_APP_API_URL}/findId`, 
         {
           params: { 
             username: userData.username,

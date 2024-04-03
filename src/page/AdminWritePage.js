@@ -67,7 +67,7 @@ export default function AdminWritePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/adminwrite", adminWriteFormData, {
+      .post(`${process.env.REACT_APP_API_URL}/adminwrite`, adminWriteFormData, {
         headers: {
           "Content-Type": "application/json",
           Authorization: tokenSelecter,

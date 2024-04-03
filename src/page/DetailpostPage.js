@@ -58,7 +58,7 @@ export default function DetailpostPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/detailpost?uid=${searchParams.get("uid")}`)
+      .get(`${process.env.REACT_APP_API_URL}/detailpost?uid=${searchParams.get("uid")}`)
       .then((resp) => {
         setDetailPostDate(resp.data);
         console.log(detailPostData);
@@ -69,7 +69,7 @@ export default function DetailpostPage() {
     e.preventDefault();
     axios
       .post(
-        `http://localhost:8080/detailpost/${searchParams.get("uid")}/comments`,
+        `${process.env.REACT_APP_API_URL}/detailpost/${searchParams.get("uid")}/comments`,
         {
           content: editorHtml,
         },
@@ -88,7 +88,7 @@ export default function DetailpostPage() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8080/detailpost/comments?postUid=${searchParams.get(
+        `${process.env.REACT_APP_API_URL}/detailpost/comments?postUid=${searchParams.get(
           "uid"
         )}`
       )
@@ -101,7 +101,7 @@ export default function DetailpostPage() {
   const handleDeleteComment = (uid) => {
     axios
       .post(
-        `http://localhost:8080/detailpost/${searchParams.get(
+        `${process.env.REACT_APP_API_URL}/detailpost/${searchParams.get(
           "uid"
         )}/deletecomment`,
         {
@@ -124,7 +124,7 @@ export default function DetailpostPage() {
   const handleDeletePost = (uid) => {
     axios
       .post(
-        `http://localhost:8080/detailpost/${searchParams.get(
+        `${process.env.REACT_APP_API_URL}/detailpost/${searchParams.get(
           "uid"
         )}/deletepost`,
         {

@@ -27,7 +27,7 @@ export default function NoticePage() {
   const itemsPerPage = 5;
 
   useEffect(() => {
-    axios.get("http://localhost:8080/notice").then((resp) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/notice`).then((resp) => {
       setAdminPostList(resp.data);
     });
   }, []);

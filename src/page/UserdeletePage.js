@@ -39,7 +39,7 @@ export default function UserdeletePage() {
     e.preventDefault();
     if(checkboxClick.current === false){
       const resp = axios.post(
-        "http://localhost:8080/exitMember",
+        `${process.env.REACT_APP_API_URL}/exitMember`,
         { userPw: formData.password, userId: userId },
         { headers: { "Content-Type": "application/json", "Authorization": token } }
       ).then((resp)=>{

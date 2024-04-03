@@ -23,7 +23,7 @@ export default function LoginPage(){
     const handleClickButtonLogin = async() => {
         try {
             const response = await axios.post(
-                "http://localhost:8080/login",
+                `${process.env.REACT_APP_API_URL}/login`,
                 {
                     username: formData.userId,
                     password: formData.userPw

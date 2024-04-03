@@ -54,7 +54,7 @@ export default function SignupPage() {
       const regex = /^[A-Za-z0-9]{4,10}$/;
       if (regex.test(formData.userId)) {
         const response = await axios.post(
-          "http://localhost:8080/idCheck",
+          `${process.env.REACT_APP_API_URL}/idCheck`,
           { userId: formData.userId },
           { headers: { "Content-Type": "application/json" } }
         );
@@ -77,7 +77,7 @@ export default function SignupPage() {
       const regex = /^[가-힣A-Za-z0-9]{4,10}$/;
       if (regex.test(formData.nickname)) {
         const response = await axios.post(
-          "http://localhost:8080/nicknameCheck",
+          `${process.env.REACT_APP_API_URL}/nicknameCheck`,
           { nickname: formData.nickname },
           { headers: { "Content-Type": "application/json" } }
         );
@@ -138,7 +138,7 @@ export default function SignupPage() {
     try {
       if (normalization === true) {
         const response = await axios.post(
-          "http://localhost:8080/signup",
+          `${process.env.REACT_APP_API_URL}/signup`,
           {
             username: formData.username,
             nickname: formData.nickname,

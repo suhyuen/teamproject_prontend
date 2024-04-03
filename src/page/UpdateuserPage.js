@@ -23,7 +23,7 @@ export default function UpdateuserPage() {
   });
 
   useEffect(() => {
-    const response = axios.get("http://localhost:8080/userInfo", 
+    const response = axios.get(`${process.env.REACT_APP_API_URL}/userInfo`, 
     {
       params: { userId: userIdSelecter },
       headers: { Authorization: tokenSelecter }
@@ -54,7 +54,7 @@ export default function UpdateuserPage() {
     const regex = /^[가-힣A-Za-z0-9]{4,10}$/;
     if (regex.test(formData.userNickname)) {
       const response = await axios.post(
-        "http://localhost:8080/nicknameCheck",
+        `${process.env.REACT_APP_API_URL}/nicknameCheck`,
         { nickname: formData.userNickname },
         { headers: { "Content-Type": "application/json" }}
       );
@@ -92,7 +92,7 @@ export default function UpdateuserPage() {
     try {
       if (normalization === true) {
         const response = axios.post(
-          "http://localhost:8080/userInfoUpdate",
+          `${process.env.REACT_APP_API_URL}/userInfoUpdate`,
           {
             userId: userIdSelecter,
             nickname: formData.userNickname,
