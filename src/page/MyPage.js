@@ -25,7 +25,6 @@ export default function MyPage() {
   });
 
   useEffect(() => {
-<<<<<<< HEAD
     const response = axios.get("http://localhost:8080/userInfo", 
     {
       params: { userId: userIdSelecter },
